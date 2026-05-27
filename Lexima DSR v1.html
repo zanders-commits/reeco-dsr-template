@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lexima Lodging × Reeco Digital Sales Room</title>
-<meta name="description" content="Lexima Lodging × Reeco Digital Sales Room — built for Nick Auer, Taylor Gilbert, and the Lexima Lodging leadership team.">
+<title>Lexima Lodging × Reeco — Proposal &amp; Demo Review</title>
+<meta name="description" content="Private digital sales room for Nick Auer, Taylor Gilbert, and the Lexima Lodging leadership team.">
 <link rel="stylesheet" href="colors_and_type.css">
 <link rel="icon" href="assets/reeco-mark.svg">
 <style>
@@ -26,22 +26,17 @@
     border-bottom: 1px solid var(--border-1);
   }
   .nav-inner {
-    max-width: 1200px; margin: 0 auto; padding: 16px 32px;
-    display: flex; align-items: center; gap: 28px;
+    max-width: 1200px; margin: 0 auto; padding: 14px 32px;
+    display: flex; align-items: center; gap: 24px;
   }
-  .nav-brand { display: flex; align-items: center; gap: 12px; padding-right: 8px; }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
   .nav-brand img { height: 22px; display: block; }
-  .nav-divider { width: 1px; height: 22px; background: var(--stone-300); margin: 0 4px; }
-  .nav-context { font-size: 12px; color: var(--stone-700); font-weight: var(--fw-medium); letter-spacing: 0.1px; padding-right: 8px; }
+  .nav-divider { width: 1px; height: 20px; background: var(--stone-300); }
+  .nav-context { font-size: 12px; color: var(--stone-700); font-weight: var(--fw-medium); letter-spacing: 0.1px; }
   .nav-context strong { color: var(--navy-900); font-weight: var(--fw-bold); }
   .nav-links { display: none; margin-left: auto; gap: 22px; }
-  .nav-links a {
-    color: var(--stone-700); font-size: 13px; font-weight: var(--fw-medium);
-    text-decoration: none;
-    text-transform: none !important;
-  }
+  .nav-links a { color: var(--stone-700); font-size: 13px; font-weight: var(--fw-medium); text-decoration: none; }
   .nav-links a:hover { color: var(--mint-700); }
-  .nav-context, .nav-context strong { text-transform: none !important; }
   .nav-cta { margin-left: auto; }
   @media (min-width: 980px) {
     .nav-links { display: flex; }
@@ -102,7 +97,16 @@
     position: relative; overflow: hidden;
     background: var(--mint-500);
     color: var(--navy-900);
-    padding: 56px 32px 0;
+    padding: 80px 32px 0;
+  }
+  /* The brand's cloud/scallop motif rising from the bottom */
+  .hero-scallop {
+    position: absolute; left: 0; right: 0; bottom: -1px; height: 80px;
+    background: #fff;
+    -webkit-mask: radial-gradient(60px 60px at 60px 0, transparent 99%, #000 100%) repeat-x;
+            mask: radial-gradient(60px 60px at 60px 0, transparent 99%, #000 100%) repeat-x;
+    -webkit-mask-size: 120px 60px;
+            mask-size: 120px 60px;
   }
   .hero::before {
     content: ""; position: absolute; inset: auto -120px -180px auto;
@@ -113,7 +117,7 @@
   .hero-inner {
     max-width: 1200px; margin: 0 auto;
     display: grid; grid-template-columns: 1.35fr 1fr;
-    gap: 64px; align-items: start;
+    gap: 64px; align-items: end;
     padding-bottom: 120px;
     position: relative; z-index: 1;
   }
@@ -140,43 +144,34 @@
     letter-spacing: -0.025em;
     line-height: 1.15;
     color: var(--navy-900);
-    margin: 0 0 16px;
+    margin: 24px 0 22px;
     text-wrap: balance;
   }
   .hero h1 em {
     font-style: normal;
-    color: var(--navy-900);
-    background: none;
-    padding: 0;
-    border-radius: 0;
-    font-size: 0.6em;
-    font-weight: var(--fw-regular);
-    opacity: 0.42;
-    margin: 0 0.04em;
-    vertical-align: 0.22em;
-    font-family: var(--font-sans);
+    color: #fff;
+    background: var(--navy-900);
+    padding: 0 0.08em;
+    border-radius: 8px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
   }
-  .hero-eyebrow + .hero-sub,
   .hero-sub {
     font-size: 19px; line-height: 1.55; color: var(--navy-900);
-    max-width: 540px; opacity: 0.85; margin: 0 0 24px;
+    max-width: 540px; opacity: 0.85; margin: 0 0 18px;
     font-weight: var(--fw-medium);
   }
-  .hero h1 + .hero-eyebrow { margin-top: 0; margin-bottom: 28px; }
-  .hero-chips {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    margin: 0 0 28px;
-  }
-  .hero-chip {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.55);
-    border: 1px solid rgba(10, 24, 74, 0.14);
+  .hero-context {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid rgba(10, 24, 74, 0.12);
     color: var(--navy-900);
-    padding: 8px 14px; border-radius: var(--radius-pill);
-    font-size: 12px; font-weight: var(--fw-bold);
-    letter-spacing: 0.01em;
+    padding: 10px 16px; border-radius: var(--radius-xl);
+    font-size: 13px; font-weight: var(--fw-medium);
+    margin-bottom: 32px;
   }
-  .hero-chip svg { color: var(--navy-900); opacity: 0.7; }
+  .hero-context strong { font-weight: var(--fw-bold); }
+  .hero-context .sep { color: var(--navy-600); }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
   /* Meeting card on the right side of the hero */
@@ -188,51 +183,33 @@
     color: var(--navy-900);
     position: relative;
   }
-  .meeting-eyebrow {
+  .meeting-card-eyebrow {
+    display: flex; align-items: center; justify-content: space-between;
     font-size: 11px; font-weight: var(--fw-bold);
     letter-spacing: 2px; text-transform: uppercase;
-    color: var(--mint-700);
+    color: var(--stone-700);
+    padding-bottom: 18px; border-bottom: 1px solid var(--stone-200);
   }
-  .meeting-title {
-    font-size: 22px; font-weight: var(--fw-bold);
-    color: var(--navy-900); margin: 6px 0 20px;
-    letter-spacing: -0.008em; line-height: 1.2;
+  .meeting-card-eyebrow .pill {
+    background: var(--mint-100); color: var(--mint-800);
+    padding: 4px 10px; border-radius: 999px;
+    font-size: 10px; letter-spacing: 1.5px;
   }
-  .meeting-when {
-    display: grid; grid-template-columns: 68px 1fr;
-    gap: 16px; align-items: center;
-    padding: 20px 0;
-    border-top: 1px solid var(--stone-200);
+  .meeting-date {
+    display: flex; align-items: baseline; gap: 12px; margin: 22px 0 4px;
   }
-  .meeting-when-date {
-    display: flex; flex-direction: column; align-items: center;
-    background: var(--mint-100); border-radius: var(--radius-lg); padding: 10px 0;
+  .meeting-date .day {
+    font-size: 56px; font-weight: var(--fw-black);
+    letter-spacing: -0.03em; line-height: 1; color: var(--navy-900);
   }
-  .meeting-when-date .day {
-    font-size: 30px; font-weight: var(--fw-black);
-    letter-spacing: -0.02em; line-height: 1;
-    color: var(--navy-900); font-feature-settings: "tnum";
+  .meeting-date .my {
+    font-size: 16px; font-weight: var(--fw-bold);
+    color: var(--navy-900);
   }
-  .meeting-when-date .day.tbd {
-    font-size: 14px; font-weight: var(--fw-bold);
-    letter-spacing: 1px;
-  }
-  .meeting-when-date .mon {
-    font-size: 10px; font-weight: var(--fw-bold);
-    letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--mint-800); margin-top: 5px;
-  }
-  .meeting-when-meta {
-    display: flex; flex-direction: column; gap: 4px; min-width: 0;
-  }
-  .meeting-when-meta .l1 {
-    font-size: 15px; font-weight: var(--fw-bold);
-    color: var(--navy-900); letter-spacing: -0.005em;
-  }
-  .meeting-when-meta .l2,
-  .meeting-when-meta .l3 {
-    font-size: 13px; color: var(--stone-700);
-    font-weight: var(--fw-medium); line-height: 1.4;
+  .meeting-date .my .yr { color: var(--stone-500); font-weight: var(--fw-medium); }
+  .meeting-time {
+    font-size: 14px; color: var(--stone-700); font-weight: var(--fw-medium);
+    margin-bottom: 22px;
   }
   .meeting-attendees {
     border-top: 1px solid var(--stone-200);
@@ -241,7 +218,7 @@
   .attendee-label {
     font-size: 11px; font-weight: var(--fw-bold);
     letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--navy-900); margin-bottom: 12px;
+    color: var(--stone-500); margin-bottom: 12px;
   }
   .attendee-row {
     display: flex; align-items: center; gap: 12px;
@@ -258,7 +235,7 @@
   .attendee-avatar.reeco { background: var(--navy-900); color: #fff; }
   .attendee-info { flex: 1; min-width: 0; }
   .attendee-name { font-size: 13px; font-weight: var(--fw-bold); color: var(--navy-900); }
-  .attendee-role { font-size: 11px; color: var(--stone-700); }
+  .attendee-role { font-size: 11px; color: var(--stone-500); }
   .attendee-org {
     font-size: 10px; font-weight: var(--fw-bold);
     letter-spacing: 1.5px; text-transform: uppercase;
@@ -1498,16 +1475,16 @@
       <img src="assets/reeco-logo-primary-green.svg" alt="Reeco">
     </a>
     <div class="nav-divider" aria-hidden="true"></div>
-    <div class="nav-context">Prepared for <strong>Lexima Lodging</strong></div>
+    <div class="nav-context">prepared for <strong>Lexima Lodging</strong> &nbsp;<span style="color:var(--stone-400)">///</span>&nbsp; ap automation · 30 properties · m3</div>
     <div class="nav-links">
-      <a href="#problem">Problem &amp; Solution</a>
-      <a href="#platform">Platform</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#integration">Integration</a>
-      <a href="#library">Library</a>
-      <a href="#faq">FAQ</a>
+      <a href="#problem">problem &amp; solution</a>
+      <a href="#platform">platform</a>
+      <a href="#pricing">pricing</a>
+      <a href="#integration">integration</a>
+      <a href="#library">library</a>
+      <a href="#faq">faq</a>
     </div>
-    <a href="https://calendar.app.google/CcVnBJfoNXPsqWabA" target="_blank" rel="noopener" class="btn btn-primary nav-cta">Schedule 60 Minutes with Zander <span class="arr">→</span></a>
+    <a href="https://calendar.app.google/aZ3j7d7nFaq6hrEg7" target="_blank" rel="noopener" class="btn btn-primary nav-cta">Schedule time with Zander <span class="arr">→</span></a>
   </div>
 </nav>
 
@@ -1515,37 +1492,31 @@
 <section class="hero" id="top">
   <div class="hero-inner">
     <div>
-      <h1>Lexima Lodging <em>×</em> Reeco</h1>
-      <div class="hero-eyebrow"><span class="live-dot"></span>Digital Sales Room</div>
-      <p class="hero-sub">A hospitality-native procurement platform built to replace complexity with clarity, across purchasing, AP automation, inventory, and culinary management.</p>
-      <div class="hero-chips">
-        <span class="hero-chip">Built for Lexima Lodging</span>
-        <span class="hero-chip">Hotel Management Company</span>
-        <span class="hero-chip">M3 Direct Integration</span>
+      <div class="hero-eyebrow"><span class="live-dot"></span>private digital sales room</div>
+      <h1>Nick, Taylor &mdash;<br><em>here's everything</em> ahead of your Reeco review.</h1>
+      <p class="hero-sub">A hospitality-native AP automation platform that integrates directly with M3 &mdash; built to eliminate the invoicing failures, manual coding, and M3 sync issues your team deals with today.</p>
+      <div class="hero-context">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9z"/></svg>
+        Built for Lexima &nbsp;<span class="sep">///</span>&nbsp; hotel management company &nbsp;<span class="sep">///</span>&nbsp; M3 direct integration
       </div>
       <div class="hero-actions">
-        <a href="https://calendar.app.google/CcVnBJfoNXPsqWabA" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="background: var(--navy-900);">Schedule 60 Minutes with Zander <span class="arr">→</span></a>
+        <a href="https://calendar.app.google/aZ3j7d7nFaq6hrEg7" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="background: var(--navy-900);">Schedule time with Zander <span class="arr">→</span></a>
         <a href="https://app.fireflies.ai/soundbites/gssys2g7PtY" target="_blank" rel="noopener" class="btn btn-on-mint btn-lg">Watch the demo <span class="arr">→</span></a>
       </div>
     </div>
 
-    <aside class="meeting-card" aria-label="Next step">
-      <div class="meeting-eyebrow">Next Step</div>
-      <div class="meeting-title">Follow-Up Demo</div>
-      <div class="meeting-when">
-        <div class="meeting-when-date">
-          <span class="day tbd">TBD</span>
-          <span class="mon">Pending</span>
-        </div>
-        <div class="meeting-when-meta">
-          <div class="l1">Date pending Megan's availability</div>
-          <div class="l2">60 Minutes</div>
-          <div class="l3">Demo + Proposal Review</div>
-        </div>
+    <aside class="meeting-card" aria-label="Meeting context">
+      <div class="meeting-card-eyebrow">
+        <span>your proposal review</span>
+        <span class="pill">demo · may 26</span>
       </div>
+      <div class="meeting-date">
+        <span class="day" style="font-size:36px;line-height:1.05;letter-spacing:-0.015em;">Demo + proposal review</span>
+      </div>
+      <div class="meeting-time">date pending team availability &nbsp;·&nbsp; with Megan, VP of Operations + leadership</div>
 
       <div class="meeting-attendees">
-        <div class="attendee-label">Lexima Lodging</div>
+        <div class="attendee-label">Lexima</div>
         <div class="attendee-row">
           <div class="attendee-avatar peregrine">NA</div>
           <div class="attendee-info">
@@ -1571,39 +1542,33 @@
             <div class="attendee-role">Head of Enterprise Sales</div>
           </div>
         </div>
-        <div class="attendee-row">
-          <div class="attendee-avatar reeco">PB</div>
-          <div class="attendee-info">
-            <div class="attendee-name">Paul Bennie</div>
-            <div class="attendee-role">SVP of Revenue</div>
-          </div>
-        </div>
       </div>
     </aside>
   </div>
+  <div class="hero-scallop" aria-hidden="true"></div>
 </section>
 
-<!-- ──────────── HERO TIMELINE (What Happens Next) ──────────── -->
+<!-- ──────────── HERO TIMELINE (what happens next) ──────────── -->
 <div class="hero-timeline">
   <div class="hero-timeline-card" style="grid-template-columns: minmax(180px, auto) repeat(3, 1fr);">
     <div class="hero-timeline-label">
-      <div class="hero-timeline-eyebrow">/// What Happens Next</div>
-      <div class="hero-timeline-title">From Here to Go-Live</div>
+      <div class="hero-timeline-eyebrow">/// what happens next</div>
+      <div class="hero-timeline-title">From here to go-live</div>
     </div>
     <div class="ht-step">
-      <div class="ht-step-num">Step 01</div>
-      <div class="ht-step-title">Follow-Up Demo</div>
-      <div class="ht-step-date">Nick, Taylor + Megan and regional directors &middot; TBD</div>
+      <div class="ht-step-num">step 01</div>
+      <div class="ht-step-title">Proposal review</div>
+      <div class="ht-step-date">Nick, Taylor + leadership &middot; TBD</div>
     </div>
     <div class="ht-step future">
-      <div class="ht-step-num">Step 02</div>
-      <div class="ht-step-title">Contract Review</div>
-      <div class="ht-step-date">June–July 2026</div>
+      <div class="ht-step-num">step 02</div>
+      <div class="ht-step-title">Follow-up demo</div>
+      <div class="ht-step-date">Megan, VP Ops + regional directors</div>
     </div>
     <div class="ht-step future">
-      <div class="ht-step-num">Step 03</div>
-      <div class="ht-step-title">Kickoff</div>
-      <div class="ht-step-date">Within 1 week of contract execution</div>
+      <div class="ht-step-num">step 03</div>
+      <div class="ht-step-title">Contract &amp; kickoff</div>
+      <div class="ht-step-date">AP automation live within 1 week</div>
     </div>
   </div>
 </div>
@@ -1611,24 +1576,24 @@
 <!-- ──────────── SECTION 02: PROBLEM + SOLUTION (merged) ──────────── -->
 <section id="problem">
   <div class="container">
-    <div class="eyebrow">Section 02 &nbsp;/&nbsp; Business Case + Proposed Solution</div>
-    <h2 class="section-title">The Problem You're Solving — and How Reeco Closes It.</h2>
+    <div class="eyebrow">section 02 &nbsp;/&nbsp; business case + proposed solution</div>
+    <h2 class="section-title">The problem you're solving — and how Reeco closes it.</h2>
     <p class="section-sub">Three pain points. Three direct answers.</p>
 
     <div class="ps-list">
       <div class="ps-pair">
         <div class="ps-num">01</div>
         <div class="ps-card problem">
-          <div class="ps-eyebrow problem"><span class="ps-dot"></span>The Problem</div>
-          <h3 class="ps-headline">Invoices Failing to Reach M3 — Weekly, Without Warning.</h3>
+          <div class="ps-eyebrow problem"><span class="ps-dot"></span>the problem</div>
+          <h3 class="ps-headline">Invoices failing to reach M3 &mdash; weekly, without warning.</h3>
           <p class="ps-body">Lexima's current system generates incorrect coding, blocked invoices, and duplicates on a weekly basis. When invoices don't flow through to M3, the failure queue has to be manually reviewed &mdash; a process that has become a standing part of the team's weekly routine. There's no proactive flagging; the error only surfaces during reconciliation.</p>
         </div>
         <div class="ps-arrow" aria-hidden="true">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
         <div class="ps-card answer">
-          <div class="ps-eyebrow answer"><span class="ps-dot"></span>The Answer</div>
-          <h3 class="ps-headline">Invoices Sync to M3 Automatically — No Failure Queue.</h3>
+          <div class="ps-eyebrow answer"><span class="ps-dot"></span>the answer</div>
+          <h3 class="ps-headline">Invoices sync to M3 automatically &mdash; no failure queue.</h3>
           <p class="ps-body">Reeco is M3's official Preferred Partner &mdash; the integration was built with M3, not around it. GL accounts and vendors sync directly from your M3 instance. Approved invoices flow back automatically, fully coded, with no manual exports and no month-end catch-up. Invoices are visible and viewable from M3 &mdash; not just from Reeco.</p>
         </div>
       </div>
@@ -1636,16 +1601,16 @@
       <div class="ps-pair">
         <div class="ps-num">02</div>
         <div class="ps-card problem">
-          <div class="ps-eyebrow problem"><span class="ps-dot"></span>The Problem</div>
-          <h3 class="ps-headline">Manual Coding That Creates Inconsistency at Scale.</h3>
+          <div class="ps-eyebrow problem"><span class="ps-dot"></span>the problem</div>
+          <h3 class="ps-headline">Manual coding that creates inconsistency at scale.</h3>
           <p class="ps-body">With the current system, GMs code invoices individually with no intelligence that learns over time. The same item ordered by different departments codes differently across properties &mdash; inconsistency that compounds at month-end and creates extra review work for the AP team.</p>
         </div>
         <div class="ps-arrow" aria-hidden="true">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
         <div class="ps-card answer">
-          <div class="ps-eyebrow answer"><span class="ps-dot"></span>The Answer</div>
-          <h3 class="ps-headline">AI That Learns How Your Team Codes — by Role, by Property.</h3>
+          <div class="ps-eyebrow answer"><span class="ps-dot"></span>the answer</div>
+          <h3 class="ps-headline">AI that learns how your team codes &mdash; by role, by property.</h3>
           <p class="ps-body">Reeco's AI learns from every invoice your team processes. A housekeeping manager coding nitrile gloves applies a different GL than a food &amp; beverage manager ordering the same item. After a few coding cycles, the system handles the distinction automatically &mdash; no manual intervention required.</p>
         </div>
       </div>
@@ -1653,16 +1618,16 @@
       <div class="ps-pair">
         <div class="ps-num">03</div>
         <div class="ps-card problem">
-          <div class="ps-eyebrow problem"><span class="ps-dot"></span>The Problem</div>
-          <h3 class="ps-headline">No Single View Across All Properties for the AP Team.</h3>
+          <div class="ps-eyebrow problem"><span class="ps-dot"></span>the problem</div>
+          <h3 class="ps-headline">No single view across all properties for the AP team.</h3>
           <p class="ps-body">The AP team currently has to access each property separately to review invoice status. There's no consolidated corporate view showing all 30 properties, what's pending approval, and what has been pushed to M3.</p>
         </div>
         <div class="ps-arrow" aria-hidden="true">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
         <div class="ps-card answer">
-          <div class="ps-eyebrow answer"><span class="ps-dot"></span>The Answer</div>
-          <h3 class="ps-headline">One Login. All Properties. Configurable Permissions.</h3>
+          <div class="ps-eyebrow answer"><span class="ps-dot"></span>the answer</div>
+          <h3 class="ps-headline">One login. All properties. Configurable permissions.</h3>
           <p class="ps-body">Reeco's corporate dashboard gives the AP team visibility across the entire portfolio from a single login. Approval workflows are fully configurable &mdash; GM codes, regional director approval gate for budget overages, AP review, then push to M3 &mdash; built to match how Lexima already operates, not the other way around.</p>
         </div>
       </div>
@@ -1676,7 +1641,7 @@
           <div class="callout-avatar">SH</div>
           <div>
             <div class="callout-name">Sai Hospitality Management Company</div>
-            <div class="callout-meta">AP Automation — M3 Integration</div>
+            <div class="callout-meta">AP Automation &mdash; M3 integration</div>
           </div>
         </div>
       </div>
@@ -1687,8 +1652,8 @@
 <!-- ──────────── SECTION 03: THE PLATFORM ──────────── -->
 <section id="platform" class="platform-section">
   <div class="container">
-    <div class="eyebrow">Section 03 &nbsp;/&nbsp; The Platform</div>
-    <h2 class="section-title">What's Included.</h2>
+    <div class="eyebrow">section 03 &nbsp;/&nbsp; the platform</div>
+    <h2 class="section-title">What's included.</h2>
     <p class="section-sub">One login. Built for hospitality back-of-house from the ground up.</p>
 
     <div class="platform-grid">
@@ -1698,7 +1663,7 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13l2 2 4-4"/></svg>
           </div>
           <h3>AP Automation</h3>
-          <span style="margin-left:auto;font-size:10px;font-weight:var(--fw-bold);letter-spacing:1.5px;text-transform:uppercase;color:var(--mint-800);background:var(--mint-100);padding:5px 10px;border-radius:999px;">Primary Scope</span>
+          <span style="margin-left:auto;font-size:10px;font-weight:var(--fw-bold);letter-spacing:1.5px;text-transform:uppercase;color:var(--mint-800);background:var(--mint-100);padding:5px 10px;border-radius:999px;">primary scope</span>
         </div>
         <p>Every invoice &mdash; organized, AI-coded by line item, and ready to sync with M3. <strong>What used to take 7–10 minutes per invoice takes about 20 seconds.</strong> The coding learns over time, so it gets faster and more accurate the longer you use it.</p>
       </article>
@@ -1709,7 +1674,7 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           </div>
           <h3>Purchasing &amp; Receiving</h3>
-          <span style="margin-left:auto;font-size:10px;font-weight:var(--fw-bold);letter-spacing:1.5px;text-transform:uppercase;color:var(--stone-700);background:var(--stone-100);padding:5px 10px;border-radius:999px;">When Ready</span>
+          <span style="margin-left:auto;font-size:10px;font-weight:var(--fw-bold);letter-spacing:1.5px;text-transform:uppercase;color:var(--stone-700);background:var(--stone-100);padding:5px 10px;border-radius:999px;">when ready</span>
         </div>
         <p>Full visibility and control across F&amp;B, housekeeping, engineering, and service agreements. All your suppliers in one connected place &mdash; <strong>existing partnerships, pricing, and agreements honored.</strong> Mobile receiving lets your team check in orders on the spot; Reeco handles missing items and credits automatically.</p>
       </article>
@@ -1720,7 +1685,7 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
           </div>
           <h3>Inventory</h3>
-          <span style="margin-left:auto;font-size:10px;font-weight:var(--fw-bold);letter-spacing:1.5px;text-transform:uppercase;color:var(--stone-700);background:var(--stone-100);padding:5px 10px;border-radius:999px;">When Ready</span>
+          <span style="margin-left:auto;font-size:10px;font-weight:var(--fw-bold);letter-spacing:1.5px;text-transform:uppercase;color:var(--stone-700);background:var(--stone-100);padding:5px 10px;border-radius:999px;">when ready</span>
         </div>
         <p>Always up-to-date pricing, easy audit setup, and a mobile-friendly count experience. <strong>Open the app, count by tapping through the list, and your report is ready instantly.</strong></p>
       </article>
@@ -1731,7 +1696,7 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M12 2v20"/><path d="M6 6c2 0 4 2 4 4M18 6c-2 0-4 2-4 4M6 18c2 0 4-2 4-4M18 18c-2 0-4-2-4-4"/></svg>
           </div>
           <h3>Culinary Management</h3>
-          <span style="margin-left:auto;font-size:10px;font-weight:var(--fw-bold);letter-spacing:1.5px;text-transform:uppercase;color:var(--stone-700);background:var(--stone-100);padding:5px 10px;border-radius:999px;">When Ready</span>
+          <span style="margin-left:auto;font-size:10px;font-weight:var(--fw-bold);letter-spacing:1.5px;text-transform:uppercase;color:var(--stone-700);background:var(--stone-100);padding:5px 10px;border-radius:999px;">when ready</span>
         </div>
         <p>Menus connected to recipes. <strong>Clear visibility into food cost by dish</strong> &mdash; what's making money, what's costing more than it should, and where to adjust before the next menu cycle.</p>
       </article>
@@ -1756,19 +1721,19 @@
 <!-- ──────────── SECTION 04: PRICING ──────────── -->
 <section id="pricing" class="pricing-section">
   <div class="container">
-    <div class="eyebrow">Section 04 &nbsp;/&nbsp; Pricing</div>
-    <h2 class="section-title">Pricing Structured for Lexima.</h2>
-    <p class="section-sub">This proposal was prepared for Lexima following your May 26 discovery call. A 50-percent enterprise discount has been applied to the setup fee.</p>
+    <div class="eyebrow">section 04 &nbsp;/&nbsp; pricing</div>
+    <h2 class="section-title">Pricing structured for Lexima.</h2>
+    <p class="section-sub">This proposal was prepared for Lexima following your May 26 discovery call. A 50% enterprise discount has been applied to the setup fee.</p>
 
     <div class="pricing-v2">
       <div class="pricing-v2-header">
         <div class="pricing-v2-header-l">
-          <h3>AP Automation — 30 Properties</h3>
+          <h3>AP Automation &mdash; 30 properties</h3>
           <p>AP automation priced per property, per month. Setup is a one-time per-property fee with the enterprise discount applied.</p>
         </div>
         <div class="pricing-v2-discount">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          50-Percent Setup Discount Applied
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+          50% setup discount applied
         </div>
       </div>
 
@@ -1791,7 +1756,7 @@
             <td><span class="total">$4,500 / mo</span></td>
           </tr>
           <tr>
-            <td><span class="pricing-module">Setup Fee<span class="sub">after 50-percent enterprise discount</span></span></td>
+            <td><span class="pricing-module">Setup fee<span class="sub">after 50% enterprise discount</span></span></td>
             <td><span class="billing onetime">One-time</span></td>
             <td><span class="unit">$500 / property</span></td>
             <td><span class="unit">30</span></td>
@@ -1802,17 +1767,17 @@
 
       <div class="pricing-total-row" style="grid-template-columns: 1fr 1fr 1fr;">
         <div class="pricing-total-card">
-          <div class="tlbl">Monthly Total</div>
+          <div class="tlbl">Monthly total</div>
           <div class="tnum">$4,500<span style="font-size:16px;font-weight:var(--fw-bold);margin-left:4px;">/ mo</span></div>
           <div class="tdesc">across 30 properties</div>
         </div>
         <div class="pricing-total-card dark">
-          <div class="tlbl">One-Time Setup</div>
+          <div class="tlbl">One-time setup</div>
           <div class="tnum">$7,500</div>
           <div class="tdesc">after $7,500 enterprise discount</div>
         </div>
         <div class="pricing-total-card" style="background: var(--navy-100);">
-          <div class="tlbl" style="color: var(--mint-800);">Annual Value</div>
+          <div class="tlbl" style="color: var(--mint-800);">Annual value</div>
           <div class="tnum">$54,000</div>
           <div class="tdesc">subscription, year one</div>
         </div>
@@ -1820,22 +1785,22 @@
 
       <div class="pricing-terms" aria-label="Contract terms">
         <div class="pricing-terms-item">
-          <span class="lbl">Initial Term</span>
-          <span class="val">24 Months</span>
+          <span class="lbl">Initial term</span>
+          <span class="val">24 months</span>
         </div>
         <div class="pricing-terms-item">
-          <span class="lbl">Payment Terms</span>
+          <span class="lbl">Payment terms</span>
           <span class="val">Net 30</span>
         </div>
         <div class="pricing-terms-item">
           <span class="lbl">Renewal</span>
-          <span class="val">Auto-renews in 12-Month Increments</span>
+          <span class="val">Auto-renews in 12-month increments</span>
         </div>
       </div>
 
       <div class="pricing-v2-footer">
         <p style="font-size: 13px; color: var(--stone-700); margin: 0; max-width: 480px; line-height: 1.5;">Auto-renewal in 12-month increments after the initial term accommodates portfolio changes.</p>
-        <a href="https://lp.reeco.io/4lpZhjgMNjnzuWBUNQg" target="_blank" rel="noopener" class="btn btn-primary">View the Full Live Proposal <span class="arr">→</span></a>
+        <a href="https://lp.reeco.io/4lpZhjgMNjnzuWBUNQg" target="_blank" rel="noopener" class="btn btn-primary">View the full live proposal <span class="arr">→</span></a>
       </div>
     </div>
   </div>
@@ -1844,69 +1809,69 @@
 <!-- ──────────── SECTION 05: INTEGRATION & IMPLEMENTATION ──────────── -->
 <section id="integration" class="integration-section">
   <div class="container">
-    <div class="eyebrow">Section 05 &nbsp;/&nbsp; Integration &amp; Implementation</div>
-    <h2 class="section-title">How We Connect — and How Fast We Go Live.</h2>
+    <div class="eyebrow">section 05 &nbsp;/&nbsp; integration &amp; implementation</div>
+    <h2 class="section-title">How we connect &mdash; and how fast we go live.</h2>
     <p class="section-sub">Reeco's AP automation is purpose-built for the M3 ecosystem and our fastest module to deploy.</p>
 
     <div class="stack-grid" style="grid-template-columns: repeat(2, 1fr); gap: 20px;">
       <div class="stack-card connect" style="padding: 28px;">
-        <div class="stack-label">Accounting System</div>
+        <div class="stack-label">Accounting system</div>
         <div class="stack-name" style="font-size: 22px; margin-bottom: 12px;">M3</div>
-        <div class="stack-status connect">✓ Direct / Native</div>
+        <div class="stack-status connect">✓ direct / native</div>
         <div class="stack-detail" style="font-size: 13px; margin-top: 14px;">Reeco is M3's official Preferred Partner. GL accounts and vendors sync directly from your M3 instance at setup &mdash; no manual mapping. Invoices flow back automatically once approved. No integration fees from Reeco or M3.</div>
       </div>
       <div class="stack-card replace" style="padding: 28px;">
-        <div class="stack-label">Current Provider</div>
+        <div class="stack-label">Current provider</div>
         <div class="stack-name" style="font-size: 22px; margin-bottom: 12px;">EPRO / Reactor Net</div>
-        <div class="stack-status replace">→ Replacing</div>
+        <div class="stack-status replace">→ replacing</div>
         <div class="stack-detail" style="font-size: 13px; margin-top: 14px;">Vendors who currently email invoices to EPRO can redirect to Reeco's dedicated inbox on Day 1. No re-training required for vendors. Your team stops managing the failure queue on the same day you go live.</div>
       </div>
     </div>
 
     <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 24px; align-items: stretch;" class="impl-row">
       <div style="background:#fff; border:1px solid var(--stone-200); border-radius: var(--radius-2xl); padding: 32px;">
-        <div style="font-size:11px;font-weight:var(--fw-bold);letter-spacing:2px;text-transform:uppercase;color:var(--mint-700);margin-bottom:10px;">AP Automation</div>
-        <h3 style="font-size: 28px; font-weight: var(--fw-black); color: var(--navy-900); margin: 0 0 14px; letter-spacing:-0.015em; line-height:1.1;">Live in 1 Week.</h3>
+        <div style="font-size:11px;font-weight:var(--fw-bold);letter-spacing:2px;text-transform:uppercase;color:var(--mint-700);margin-bottom:10px;">AP automation</div>
+        <h3 style="font-size: 28px; font-weight: var(--fw-black); color: var(--navy-900); margin: 0 0 14px; letter-spacing:-0.015em; line-height:1.1;">Live in 1 week.</h3>
         <p style="font-size:14px; line-height:1.6; color: var(--stone-700); margin: 0 0 20px;">Reeco's AP automation module is the fastest to deploy &mdash; and the fastest path to eliminating the failure queue and manual coding your team manages today.</p>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
-          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span><strong style="color:var(--navy-900)">No Dedicated FTE Required</strong> from your team.</span></li>
-          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span><strong style="color:var(--navy-900)">GL Codes</strong> pulled directly from M3 at kickoff &mdash; no manual mapping.</span></li>
-          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span><strong style="color:var(--navy-900)">Vendor Email Inbox</strong> live on Day 1 &mdash; invoices start flowing immediately.</span></li>
-          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span><strong style="color:var(--navy-900)">AI Coding</strong> learns from your team's first invoice cycles and automates from there.</span></li>
-          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span><strong style="color:var(--navy-900)">M3 Sync</strong> active from Day 1 &mdash; invoices visible in M3 as they are approved.</span></li>
+          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span><strong style="color:var(--navy-900)">No dedicated FTE required</strong> from your team.</span></li>
+          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span>GL codes pulled directly from M3 at kickoff &mdash; <strong style="color:var(--navy-900)">no manual mapping.</strong></span></li>
+          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span>Vendor email inbox live on Day 1 &mdash; invoices start flowing immediately.</span></li>
+          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span>AI coding learns from your team's first invoice cycles and automates from there.</span></li>
+          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span>M3 sync active from Day 1 &mdash; invoices visible in M3 as they are approved.</span></li>
         </ul>
       </div>
 
       <div class="timeline">
         <div class="timeline-header">
-          <h3>Rollout Sequence</h3>
-          <div class="legend">Full plan delivered at follow-up</div>
+          <h3>Rollout sequence</h3>
+          <div class="legend">full plan delivered at follow-up</div>
         </div>
         <div class="timeline-rows">
           <div class="timeline-row">
             <div class="timeline-phase"><span class="dot"></span>Day 0</div>
-            <div class="timeline-activity">Contract execution — M3 credentials configured; GL codes and vendor data imported; vendor invoice inboxes activated</div>
-            <div class="timeline-target">Kickoff</div>
+            <div class="timeline-activity">Contract execution &mdash; M3 credentials configured; GL codes and vendor data imported; vendor invoice inboxes activated</div>
+            <div class="timeline-target">kickoff</div>
           </div>
           <div class="timeline-row">
             <div class="timeline-phase"><span class="dot"></span>Week 1</div>
-            <div class="timeline-activity">AP Automation live across all 30 properties — invoices flowing, coding, and syncing to M3</div>
-            <div class="timeline-target">Week 1</div>
+            <div class="timeline-activity">AP Automation live across all 30 properties &mdash; invoices flowing, coding, and syncing to M3</div>
+            <div class="timeline-target">week 1</div>
           </div>
           <div class="timeline-row">
             <div class="timeline-phase"><span class="dot"></span>Week 1</div>
             <div class="timeline-activity">Approval workflow: GM codes → Regional Director approval gate → AP review → M3; corporate dashboard active</div>
-            <div class="timeline-target">Week 1</div>
+            <div class="timeline-target">week 1</div>
           </div>
           <div class="timeline-row live">
             <div class="timeline-phase"><span class="dot"></span>Week 1</div>
-            <div class="timeline-activity">Failure queue eliminated — AP team working out of one corporate dashboard</div>
-            <div class="timeline-target">Live</div>
+            <div class="timeline-activity">Failure queue eliminated &mdash; AP team working out of one corporate dashboard</div>
+            <div class="timeline-target">live</div>
           </div>
           <div class="timeline-row">
             <div class="timeline-phase" style="color: var(--stone-500);"><span class="dot" style="background: var(--stone-300);"></span>Future</div>
             <div class="timeline-activity" style="color: var(--stone-700);">Purchasing &amp; Receiving available when Megan and the operations team are ready to evaluate</div>
-            <div class="timeline-target" style="color: var(--stone-500);">When Ready</div>
+            <div class="timeline-target" style="color: var(--stone-500);">when ready</div>
           </div>
         </div>
       </div>
@@ -1919,8 +1884,8 @@
 <!-- ──────────── SECTION 06: COLLATERAL LIBRARY ──────────── -->
 <section id="library">
   <div class="container">
-    <div class="eyebrow">Section 06 &nbsp;/&nbsp; Collateral Library</div>
-    <h2 class="section-title">Everything in One Place.</h2>
+    <div class="eyebrow">section 06 &nbsp;/&nbsp; collateral library</div>
+    <h2 class="section-title">Everything in one place.</h2>
     <p class="section-sub">Background materials Nick, Taylor, Megan, and the team can review ahead of the follow-up call.</p>
 
     <div class="collateral-grid">
@@ -1952,7 +1917,7 @@
         </div>
         <div class="collateral-body">
           <div class="collateral-title">Live Proposal</div>
-          <div class="collateral-desc">Full pricing proposal for Lexima &mdash; AP Automation for 30 properties with 50-percent enterprise discount applied.</div>
+          <div class="collateral-desc">Full pricing proposal for Lexima &mdash; AP Automation for 30 properties with 50% enterprise discount applied.</div>
         </div>
         <div class="collateral-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
       </a>
@@ -1974,8 +1939,8 @@
 <!-- ──────────── SECTION 07: FAQ ──────────── -->
 <section id="faq">
   <div class="container">
-    <div class="eyebrow">Section 07 &nbsp;/&nbsp; FAQs</div>
-    <h2 class="section-title">Questions We Expect — Answered Directly.</h2>
+    <div class="eyebrow">section 07 &nbsp;/&nbsp; faqs</div>
+    <h2 class="section-title">Questions we expect &mdash; answered directly.</h2>
     <p class="section-sub">If something's missing, email Zander and we'll add it before the follow-up call.</p>
 
     <div class="faq-list">
@@ -2025,8 +1990,8 @@
 <!-- ──────────── SECTION 08: CONTACT ──────────── -->
 <section id="booking" class="contact-section">
   <div class="container">
-    <div class="eyebrow">Section 08 &nbsp;/&nbsp; Contact</div>
-    <h2 class="section-title">Reach Us Directly.</h2>
+    <div class="eyebrow">section 08 &nbsp;/&nbsp; contact</div>
+    <h2 class="section-title">Reach us directly.</h2>
     <p class="section-sub">Your direct line to the Reeco team working on this for Lexima.</p>
 
     <div class="contact-grid">
@@ -2073,12 +2038,12 @@
 
     <div class="booking-card">
       <div>
-        <h3>Schedule Time with Zander.</h3>
+        <h3>Schedule time with Zander.</h3>
         <p>Have a question before the follow-up call? Email zanders@reeco.com &mdash; same-day response.</p>
       </div>
       <div class="booking-cta">
-        <a href="https://calendar.app.google/CcVnBJfoNXPsqWabA" target="_blank" rel="noopener" class="btn btn-on-mint btn-lg" style="background:var(--navy-900);color:#fff;">Book Time with Zander <span class="arr">→</span></a>
-        <span class="sub-line">Opens Reeco's live booking page</span>
+        <a href="https://calendar.app.google/aZ3j7d7nFaq6hrEg7" target="_blank" rel="noopener" class="btn btn-on-mint btn-lg" style="background:var(--navy-900);color:#fff;">Book time with Zander <span class="arr">→</span></a>
+        <span class="sub-line">opens reeco's live booking page</span>
       </div>
     </div>
   </div>
@@ -2089,10 +2054,10 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="assets/reeco-logo-primary-green.svg" alt="Reeco">
-      <span style="font-size:11px; color: var(--stone-500); letter-spacing: 1.5px; text-transform: uppercase; font-weight: var(--fw-bold);">/// Digital Sales Room</span>
+      <span style="font-size:11px; color: var(--stone-500); letter-spacing: 1.5px; text-transform: uppercase; font-weight: var(--fw-bold);">/// digital sales room</span>
     </div>
     <div class="footer-note">
-      <strong>Private &amp; shareable by link.</strong> This page was built for Nick Auer, Taylor Gilbert, and the Lexima leadership team. It is not indexed or gated. Learn more at <a href="https://www.reeco.com" target="_blank" rel="noopener">reeco.com</a>.
+      <strong>Private &amp; shareable by link.</strong> This page was built for Nick Auer, Taylor Gilbert, and the Lexima leadership team. It is not indexed or gated.
     </div>
   </div>
 </footer>
