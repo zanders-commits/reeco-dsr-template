@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lexima Lodging × Reeco — Proposal &amp; Demo Review</title>
+<meta name="description" content="Private digital sales room for Nick Auer, Taylor Gilbert, and the Lexima Lodging leadership team.">
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="icon" href="assets/reeco-mark.svg">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body { margin: 0; background: #fff; color: var(--fg-1); font-family: var(--font-sans); }
+
+  ::selection { background: var(--mint-100); color: var(--navy-900); }
+
+  a { color: var(--fg-link); text-decoration: none; font-weight: var(--fw-semi); }
+  a:hover { text-decoration: underline; }
+
+  /* ──────────────── NAV ──────────────── */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--border-1);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto; padding: 14px 32px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
+  .nav-brand img { height: 22px; display: block; }
+  .nav-divider { width: 1px; height: 20px; background: var(--stone-300); }
+  .nav-context { font-size: 12px; color: var(--stone-700); font-weight: var(--fw-medium); letter-spacing: 0.1px; }
+  .nav-context strong { color: var(--navy-900); font-weight: var(--fw-bold); }
+  .nav-links { display: none; margin-left: auto; gap: 22px; }
+  .nav-links a { color: var(--stone-700); font-size: 13px; font-weight: var(--fw-medium); text-decoration: none; }
+  .nav-links a:hover { color: var(--mint-700); }
+  .nav-cta { margin-left: auto; }
+  @media (min-width: 980px) {
+    .nav-links { display: flex; }
+    .nav-cta { margin-left: 24px; }
+  }
+
+  /* ──────────────── BUTTONS ──────────────── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 20px; border-radius: var(--radius-xl);
+    font-size: 14px; font-weight: var(--fw-semi);
+    border: 1px solid transparent; cursor: pointer;
+    transition: all var(--duration-med) var(--ease-out);
+    text-decoration: none;
+    font-family: var(--font-sans);
+  }
+  .btn-primary { background: var(--mint-500); color: #fff; }
+  .btn-primary:hover { background: var(--mint-700); text-decoration: none; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .btn-ghost { background: transparent; color: var(--navy-900); border-color: var(--stone-300); }
+  .btn-ghost:hover { border-color: var(--navy-900); text-decoration: none; }
+  .btn-on-mint { background: #fff; color: var(--mint-700); }
+  .btn-on-mint:hover { background: var(--navy-900); color: #fff; text-decoration: none; }
+  .btn-on-dark { background: var(--mint-500); color: #fff; }
+  .btn-on-dark:hover { background: #fff; color: var(--navy-900); text-decoration: none; }
+  .btn-lg { padding: 14px 26px; font-size: 15px; }
+  .btn .arr { transition: transform var(--duration-med) var(--ease-out); }
+  .btn:hover .arr { transform: translateX(3px); }
+
+  /* ──────────────── SECTION SHELL ──────────────── */
+  section { padding: 96px 32px; position: relative; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .eyebrow {
+    font-size: 11px; font-weight: var(--fw-bold); letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--mint-700);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .eyebrow::before {
+    content: "///"; color: var(--mint-500); letter-spacing: 0;
+  }
+  .section-title {
+    font-size: 44px; font-weight: var(--fw-black);
+    letter-spacing: -0.012em; line-height: 1.1;
+    color: var(--navy-900); margin: 14px 0 16px;
+    max-width: 880px; text-wrap: balance;
+  }
+  .section-sub {
+    font-size: 17px; line-height: 1.6; color: var(--stone-700);
+    max-width: 640px; margin: 0 0 48px;
+  }
+  @media (max-width: 720px) {
+    section { padding: 64px 22px; }
+    .section-title { font-size: 32px; }
+    .section-sub { font-size: 15px; }
+  }
+
+  /* ──────────────── HERO ──────────────── */
+  .hero {
+    position: relative; overflow: hidden;
+    background: var(--mint-500);
+    color: var(--navy-900);
+    padding: 80px 32px 0;
+  }
+  /* The brand's cloud/scallop motif rising from the bottom */
+  .hero-scallop {
+    position: absolute; left: 0; right: 0; bottom: -1px; height: 80px;
+    background: #fff;
+    -webkit-mask: radial-gradient(60px 60px at 60px 0, transparent 99%, #000 100%) repeat-x;
+            mask: radial-gradient(60px 60px at 60px 0, transparent 99%, #000 100%) repeat-x;
+    -webkit-mask-size: 120px 60px;
+            mask-size: 120px 60px;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: auto -120px -180px auto;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 60%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.35fr 1fr;
+    gap: 64px; align-items: end;
+    padding-bottom: 120px;
+    position: relative; z-index: 1;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(10, 24, 74, 0.12);
+    color: var(--navy-900);
+    padding: 6px 14px; border-radius: 999px;
+    font-size: 11px; font-weight: var(--fw-bold);
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .hero-eyebrow .live-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--navy-900);
+    animation: pulse 2s var(--ease-out) infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .hero h1 {
+    font-size: clamp(40px, 6vw, 76px);
+    font-weight: var(--fw-black);
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    color: var(--navy-900);
+    margin: 24px 0 22px;
+    text-wrap: balance;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: #fff;
+    background: var(--navy-900);
+    padding: 0 0.08em;
+    border-radius: 8px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  .hero-sub {
+    font-size: 19px; line-height: 1.55; color: var(--navy-900);
+    max-width: 540px; opacity: 0.85; margin: 0 0 18px;
+    font-weight: var(--fw-medium);
+  }
+  .hero-context {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid rgba(10, 24, 74, 0.12);
+    color: var(--navy-900);
+    padding: 10px 16px; border-radius: var(--radius-xl);
+    font-size: 13px; font-weight: var(--fw-medium);
+    margin-bottom: 32px;
+  }
+  .hero-context strong { font-weight: var(--fw-bold); }
+  .hero-context .sep { color: var(--navy-600); }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* Meeting card on the right side of the hero */
+  .meeting-card {
+    background: #fff;
+    border-radius: var(--radius-2xl);
+    padding: 28px;
+    box-shadow: var(--shadow-xl);
+    color: var(--navy-900);
+    position: relative;
+  }
+  .meeting-card-eyebrow {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 11px; font-weight: var(--fw-bold);
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--stone-700);
+    padding-bottom: 18px; border-bottom: 1px solid var(--stone-200);
+  }
+  .meeting-card-eyebrow .pill {
+    background: var(--mint-100); color: var(--mint-800);
+    padding: 4px 10px; border-radius: 999px;
+    font-size: 10px; letter-spacing: 1.5px;
+  }
+  .meeting-date {
+    display: flex; align-items: baseline; gap: 12px; margin: 22px 0 4px;
+  }
+  .meeting-date .day {
+    font-size: 56px; font-weight: var(--fw-black);
+    letter-spacing: -0.03em; line-height: 1; color: var(--navy-900);
+  }
+  .meeting-date .my {
+    font-size: 16px; font-weight: var(--fw-bold);
+    color: var(--navy-900);
+  }
+  .meeting-date .my .yr { color: var(--stone-500); font-weight: var(--fw-medium); }
+  .meeting-time {
+    font-size: 14px; color: var(--stone-700); font-weight: var(--fw-medium);
+    margin-bottom: 22px;
+  }
+  .meeting-attendees {
+    border-top: 1px solid var(--stone-200);
+    padding-top: 18px;
+  }
+  .attendee-label {
+    font-size: 11px; font-weight: var(--fw-bold);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--stone-500); margin-bottom: 12px;
+  }
+  .attendee-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 0;
+  }
+  .attendee-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--navy-100); color: var(--navy-900);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: var(--fw-bold);
+    flex-shrink: 0;
+  }
+  .attendee-avatar.peregrine { background: var(--mint-100); color: var(--mint-800); }
+  .attendee-avatar.reeco { background: var(--navy-900); color: #fff; }
+  .attendee-info { flex: 1; min-width: 0; }
+  .attendee-name { font-size: 13px; font-weight: var(--fw-bold); color: var(--navy-900); }
+  .attendee-role { font-size: 11px; color: var(--stone-500); }
+  .attendee-org {
+    font-size: 10px; font-weight: var(--fw-bold);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--stone-500);
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; padding-bottom: 100px; gap: 40px; }
+    .hero { padding: 56px 22px 0; }
+  }
+
+  /* ──────────────── PROBLEM SECTION (Business Case) ──────────────── */
+  .problem-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .problem-card {
+    background: #fff;
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius-2xl);
+    padding: 32px;
+    transition: all var(--duration-med) var(--ease-out);
+    position: relative;
+    overflow: hidden;
+  }
+  .problem-card:hover {
+    border-color: var(--stone-300);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .problem-num {
+    font-size: 64px; font-weight: var(--fw-black);
+    letter-spacing: -0.03em; line-height: 1;
+    color: var(--rose-500);
+    margin-bottom: 18px;
+    font-feature-settings: "tnum";
+  }
+  .problem-card h3 {
+    font-size: 20px; font-weight: var(--fw-bold);
+    color: var(--navy-900); margin: 0 0 12px;
+    line-height: 1.25; letter-spacing: -0.01em;
+  }
+  .problem-card p {
+    font-size: 15px; line-height: 1.6;
+    color: var(--stone-700); margin: 0;
+  }
+  @media (max-width: 900px) {
+    .problem-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ──────────────── SOLUTION SECTION ──────────────── */
+  .solution-section {
+    background: var(--navy-900);
+    color: #fff;
+  }
+  .solution-section .eyebrow { color: var(--mint-300); }
+  .solution-section .eyebrow::before { color: var(--mint-300); }
+  .solution-section .section-title { color: #fff; }
+
+  .solution-list {
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .solution-item {
+    display: grid; grid-template-columns: 80px 1fr 1fr; gap: 32px;
+    padding: 36px 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    align-items: start;
+  }
+  .solution-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .solution-num {
+    font-size: 56px; font-weight: var(--fw-black);
+    letter-spacing: -0.02em; line-height: 0.9;
+    color: var(--mint-300);
+    font-feature-settings: "tnum";
+  }
+  .solution-headline {
+    font-size: 24px; font-weight: var(--fw-bold);
+    color: #fff; letter-spacing: -0.01em; line-height: 1.2;
+  }
+  .solution-body {
+    font-size: 15px; line-height: 1.65;
+    color: rgba(255,255,255,0.78);
+  }
+  @media (max-width: 900px) {
+    .solution-item { grid-template-columns: 1fr; gap: 16px; padding: 28px 0; }
+    .solution-num { font-size: 40px; }
+    .solution-headline { font-size: 20px; }
+  }
+
+  /* ──────────────── ROI SECTION ──────────────── */
+  .roi-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 20px;
+  }
+  .roi-hero {
+    background: var(--mint-500);
+    border-radius: var(--radius-3xl);
+    padding: 48px;
+    color: var(--navy-900);
+    position: relative; overflow: hidden;
+    grid-column: span 1;
+  }
+  .roi-hero::before {
+    content: ""; position: absolute;
+    top: -80px; right: -80px;
+    width: 280px; height: 280px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+  }
+  .roi-hero-num {
+    font-size: 140px; font-weight: var(--fw-black);
+    letter-spacing: -0.04em; line-height: 0.9;
+    color: var(--navy-900);
+    font-feature-settings: "tnum";
+    position: relative; z-index: 1;
+  }
+  .roi-hero-num .unit { font-size: 36px; vertical-align: top; margin-left: 4px; font-weight: var(--fw-bold); }
+  .roi-hero-label {
+    font-size: 18px; font-weight: var(--fw-bold);
+    color: var(--navy-900); margin-top: 16px;
+    line-height: 1.35; max-width: 340px;
+    position: relative; z-index: 1;
+  }
+  .roi-hero-detail {
+    font-size: 14px; color: var(--navy-800); margin-top: 12px;
+    max-width: 340px; line-height: 1.55;
+    position: relative; z-index: 1;
+    font-weight: var(--fw-medium);
+  }
+
+  .roi-card {
+    background: #fff;
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius-2xl);
+    padding: 28px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+  }
+  .roi-card-num {
+    font-size: 52px; font-weight: var(--fw-black);
+    letter-spacing: -0.02em; line-height: 1;
+    color: var(--navy-900);
+    font-feature-settings: "tnum";
+  }
+  .roi-card-num .unit { font-size: 18px; vertical-align: top; margin-left: 2px; font-weight: var(--fw-bold); color: var(--stone-700); }
+  .roi-card-label {
+    font-size: 14px; line-height: 1.55;
+    color: var(--stone-700); margin-top: 14px;
+  }
+  .roi-card-label strong { color: var(--navy-900); font-weight: var(--fw-bold); }
+
+  .roi-secondary {
+    grid-column: span 2;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  }
+  @media (max-width: 900px) {
+    .roi-grid { grid-template-columns: 1fr; }
+    .roi-secondary { grid-template-columns: 1fr; grid-column: span 1; }
+    .roi-hero-num { font-size: 96px; }
+  }
+
+  /* ──────────────── IMPACT (v2) ──────────────── */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .impact-bullets {
+    background: #fff;
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius-2xl);
+    padding: 36px;
+    display: flex; flex-direction: column; gap: 22px;
+  }
+  .impact-bullet {
+    display: grid; grid-template-columns: 44px 1fr; gap: 18px;
+    align-items: flex-start;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--stone-200);
+  }
+  .impact-bullet:last-child { border-bottom: none; padding-bottom: 0; }
+  .impact-bullet-icon {
+    width: 44px; height: 44px; border-radius: var(--radius-lg);
+    background: var(--mint-100); color: var(--mint-800);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .impact-bullet h3 {
+    font-size: 16px; font-weight: var(--fw-bold);
+    color: var(--navy-900); margin: 0 0 6px;
+    letter-spacing: -0.005em; line-height: 1.3;
+  }
+  .impact-bullet p {
+    font-size: 14px; line-height: 1.55;
+    color: var(--stone-700); margin: 0;
+  }
+  .impact-quotes {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .impact-quote {
+    background: var(--navy-900);
+    color: #fff;
+    border-radius: var(--radius-2xl);
+    padding: 28px;
+    position: relative;
+    flex: 1;
+    display: flex; flex-direction: column;
+  }
+  .impact-quote:nth-child(2) { background: var(--mint-500); color: var(--navy-900); }
+  .impact-quote .iq-mark {
+    font-family: Georgia, serif;
+    font-size: 56px; font-weight: var(--fw-black);
+    line-height: 0.4; color: var(--mint-300);
+    margin-bottom: 8px;
+  }
+  .impact-quote:nth-child(2) .iq-mark { color: rgba(10,24,74,0.3); }
+  .impact-quote p {
+    font-size: 16px; line-height: 1.5;
+    margin: 0 0 18px; font-weight: var(--fw-medium);
+    flex-grow: 1;
+  }
+  .impact-quote .iq-attr {
+    display: flex; flex-direction: column; gap: 2px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    font-size: 13px;
+  }
+  .impact-quote:nth-child(2) .iq-attr {
+    border-top-color: rgba(10,24,74,0.2);
+  }
+  .impact-quote .iq-name { font-weight: var(--fw-bold); color: inherit; }
+  .impact-quote .iq-meta { font-size: 12px; opacity: 0.75; }
+
+  @media (max-width: 900px) {
+    .impact-grid { grid-template-columns: 1fr; }
+    .impact-bullets { padding: 28px; }
+  }
+
+  .integration-section { background: var(--stone-100); }
+
+  .stack-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+    margin-bottom: 64px;
+  }
+  .stack-card {
+    background: #fff;
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius-xl);
+    padding: 20px;
+    position: relative;
+  }
+  .stack-card.replace { border-color: var(--rose-200); background: var(--rose-100); }
+  .stack-card.connect { border-color: var(--mint-200); background: #fff; }
+  .stack-label {
+    font-size: 10px; font-weight: var(--fw-bold);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--stone-500); margin-bottom: 8px;
+  }
+  .stack-name {
+    font-size: 17px; font-weight: var(--fw-bold);
+    color: var(--navy-900); margin-bottom: 8px; letter-spacing: -0.01em;
+  }
+  .stack-status {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: var(--fw-bold);
+    padding: 3px 9px; border-radius: 999px;
+  }
+  .stack-status.replace { background: rgba(255,71,154,0.18); color: #B81E63; }
+  .stack-status.connect { background: var(--mint-100); color: var(--mint-800); }
+  .stack-status.tbd { background: var(--sun-100); color: #8C6A00; }
+  .stack-status.active { background: var(--sky-100); color: #1A6FA8; }
+  .stack-detail {
+    font-size: 12px; line-height: 1.5; color: var(--stone-700);
+    margin-top: 10px;
+  }
+  @media (max-width: 900px) {
+    .stack-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* TIMELINE */
+  .timeline {
+    background: #fff;
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+  }
+  .timeline-header {
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--stone-200);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .timeline-header h3 {
+    font-size: 17px; font-weight: var(--fw-bold);
+    color: var(--navy-900); margin: 0;
+  }
+  .timeline-header .legend {
+    font-size: 12px; color: var(--stone-500); font-weight: var(--fw-medium);
+  }
+  .timeline-rows { display: flex; flex-direction: column; }
+  .timeline-row {
+    display: grid; grid-template-columns: 110px 1fr 200px;
+    align-items: center; gap: 24px;
+    padding: 20px 28px;
+    border-top: 1px solid var(--stone-200);
+  }
+  .timeline-row:first-child { border-top: none; }
+  .timeline-phase {
+    font-size: 11px; font-weight: var(--fw-bold);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--mint-700);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .timeline-phase .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--mint-500);
+  }
+  .timeline-row.live .timeline-phase { color: var(--sky-500); }
+  .timeline-row.live .timeline-phase .dot { background: var(--sky-500); }
+  .timeline-activity {
+    font-size: 15px; color: var(--navy-900); font-weight: var(--fw-medium);
+    line-height: 1.4;
+  }
+  .timeline-target {
+    font-size: 13px; font-weight: var(--fw-bold);
+    color: var(--navy-900);
+    text-align: right;
+  }
+  @media (max-width: 720px) {
+    .timeline-row { grid-template-columns: 1fr; gap: 8px; }
+    .timeline-target { text-align: left; }
+  }
+
+  /* ──────────────── SECURITY SECTION ──────────────── */
+  .security-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .security-card {
+    background: #fff;
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius-2xl);
+    padding: 28px;
+  }
+  .security-icon {
+    width: 44px; height: 44px;
+    border-radius: var(--radius-lg);
+    background: var(--mint-100);
+    color: var(--mint-800);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .security-card h3 {
+    font-size: 17px; font-weight: var(--fw-bold);
+    color: var(--navy-900); margin: 0 0 10px;
+    letter-spacing: -0.005em;
+  }
+  .security-card p {
+    font-size: 14px; line-height: 1.6;
+    color: var(--stone-700); margin: 0;
+  }
+  @media (max-width: 900px) {
+    .security-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ──────────────── PRICING SECTION ──────────────── */
+  .pricing-section { background: var(--navy-900); color: #fff; }
+  .pricing-section .eyebrow { color: var(--mint-300); }
+  .pricing-section .eyebrow::before { color: var(--mint-300); }
+  .pricing-section .section-title { color: #fff; }
+  .pricing-section .section-sub { color: rgba(255,255,255,0.75); }
+
+  .pricing-card {
+    background: #fff;
+    border-radius: var(--radius-3xl);
+    padding: 48px;
+    color: var(--navy-900);
+    box-shadow: var(--shadow-xl);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .pricing-meta {
+    display: flex; flex-direction: column; gap: 18px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--stone-200);
+    margin-bottom: 24px;
+  }
+  .pricing-row {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  }
+  .pricing-row .lbl {
+    font-size: 11px; font-weight: var(--fw-bold);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--stone-500);
+  }
+  .pricing-row .val {
+    font-size: 14px; font-weight: var(--fw-bold);
+    color: var(--navy-900); text-align: right;
+  }
+  .pricing-discount {
+    font-size: 13px; color: var(--mint-800); font-weight: var(--fw-semi);
+    background: var(--mint-100);
+    padding: 10px 14px; border-radius: var(--radius-lg);
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-bottom: 18px;
+  }
+  .pricing-modules {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .pricing-modules li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; font-weight: var(--fw-medium);
+    color: var(--navy-900);
+    padding: 12px 14px;
+    background: var(--stone-100);
+    border-radius: var(--radius-md);
+  }
+  .pricing-modules li svg { flex-shrink: 0; color: var(--mint-700); }
+
+  .pricing-cta-card {
+    background: var(--navy-100);
+    border-radius: var(--radius-2xl);
+    padding: 28px;
+    display: flex; flex-direction: column;
+    height: 100%;
+  }
+  .pricing-cta-card h3 {
+    font-size: 22px; font-weight: var(--fw-bold);
+    margin: 0 0 10px; color: var(--navy-900);
+    letter-spacing: -0.01em; line-height: 1.25;
+  }
+  .pricing-cta-card p {
+    font-size: 14px; line-height: 1.55;
+    color: var(--stone-700); margin: 0 0 20px;
+  }
+  .pricing-cta-card .scenarios {
+    display: flex; flex-direction: column; gap: 8px;
+    margin-bottom: 20px;
+  }
+  .scenario-chip {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 14px;
+    background: #fff;
+    border: 1px solid var(--navy-200);
+    border-radius: var(--radius-lg);
+    font-size: 13px;
+  }
+  .scenario-chip .term {
+    font-weight: var(--fw-bold); color: var(--navy-900);
+  }
+  .scenario-chip .note {
+    color: var(--stone-700); font-size: 12px;
+  }
+  .pricing-link-row {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: auto;
+    padding-top: 18px; border-top: 1px solid var(--navy-200);
+  }
+  .pricing-note {
+    font-size: 12px; color: var(--stone-500); line-height: 1.5;
+    margin: 14px 0 0; font-style: italic;
+  }
+  @media (max-width: 900px) {
+    .pricing-card { grid-template-columns: 1fr; padding: 32px; }
+    .pricing-modules { grid-template-columns: 1fr; }
+  }
+
+  /* ──────────────── PLATFORM SECTION (v3) ──────────────── */
+  .platform-section { background: var(--stone-100); }
+  .platform-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  }
+  .platform-card {
+    background: #fff;
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius-2xl);
+    padding: 32px;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .platform-card-head {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 14px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--stone-200);
+  }
+  .platform-icon {
+    width: 44px; height: 44px;
+    border-radius: var(--radius-lg);
+    background: var(--mint-100); color: var(--mint-800);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .platform-card h3 {
+    font-size: 20px; font-weight: var(--fw-bold);
+    color: var(--navy-900); margin: 0;
+    letter-spacing: -0.01em; line-height: 1.2;
+  }
+  .platform-card p {
+    font-size: 14.5px; line-height: 1.6;
+    color: var(--stone-700); margin: 0;
+  }
+  .platform-card p strong { color: var(--navy-900); font-weight: var(--fw-bold); }
+  @media (max-width: 900px) {
+    .platform-grid { grid-template-columns: 1fr; }
+  }
+
+  .pricing-v2 {
+    background: #fff;
+    border-radius: var(--radius-3xl);
+    padding: 48px;
+    color: var(--navy-900);
+    box-shadow: var(--shadow-xl);
+  }
+  .pricing-v2-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--stone-200);
+    margin-bottom: 28px;
+  }
+  .pricing-v2-header-l {
+    flex: 1; min-width: 280px;
+  }
+  .pricing-v2-header-l h3 {
+    font-size: 22px; font-weight: var(--fw-bold);
+    color: var(--navy-900); margin: 0 0 8px;
+    letter-spacing: -0.005em;
+  }
+  .pricing-v2-header-l p {
+    font-size: 14px; line-height: 1.55;
+    color: var(--stone-700); margin: 0;
+    max-width: 420px;
+  }
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+  .pricing-table thead th {
+    text-align: left;
+    padding: 0 16px 14px;
+    font-size: 10px; font-weight: var(--fw-bold);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--stone-500);
+    border-bottom: 1px solid var(--stone-200);
+  }
+  .pricing-table thead th:last-child { text-align: right; }
+  .pricing-table tbody td {
+    padding: 18px 16px;
+    border-bottom: 1px solid var(--stone-200);
+    font-size: 14px;
+    color: var(--navy-900);
+    vertical-align: top;
+  }
+  .pricing-table tbody td:first-child { padding-left: 0; }
+  .pricing-table tbody td:last-child { padding-right: 0; text-align: right; }
+  .pricing-module {
+    font-size: 15px; font-weight: var(--fw-bold);
+    color: var(--navy-900);
+    line-height: 1.3;
+  }
+  .pricing-module .sub {
+    display: block; font-size: 12px; font-weight: var(--fw-medium);
+    color: var(--stone-500); margin-top: 3px;
+  }
+  .pricing-table .billing {
+    font-size: 11px; font-weight: var(--fw-bold);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--stone-700);
+    padding: 5px 10px;
+    background: var(--stone-100);
+    border-radius: 999px;
+    display: inline-block;
+  }
+  .pricing-table .billing.onetime {
+    background: var(--sun-100); color: #8C6A00;
+  }
+  .pricing-table .unit {
+    color: var(--stone-700); font-weight: var(--fw-medium);
+  }
+  .pricing-table .total {
+    font-weight: var(--fw-bold); font-size: 16px;
+    color: var(--navy-900);
+  }
+  .pricing-total-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-top: 28px;
+  }
+  .pricing-total-card {
+    background: var(--mint-500);
+    border-radius: var(--radius-xl);
+    padding: 24px 28px;
+  }
+  .pricing-total-card.dark { background: var(--navy-900); color: #fff; }
+  .pricing-total-card .tlbl {
+    font-size: 11px; font-weight: var(--fw-bold);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--navy-900);
+  }
+  .pricing-total-card.dark .tlbl { color: var(--mint-300); }
+  .pricing-total-card .tnum {
+    font-size: 36px; font-weight: var(--fw-black);
+    letter-spacing: -0.025em; line-height: 1;
+    color: var(--navy-900); margin: 8px 0 4px;
+    font-feature-settings: "tnum";
+  }
+  .pricing-total-card.dark .tnum { color: #fff; }
+  .pricing-total-card .tdesc {
+    font-size: 12px; color: var(--navy-800);
+    font-weight: var(--fw-semi);
+  }
+  .pricing-total-card.dark .tdesc { color: rgba(255,255,255,0.75); }
+
+  .pricing-terms {
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: var(--navy-100);
+    border-radius: var(--radius-lg);
+    display: flex; flex-wrap: wrap; gap: 24px;
+    font-size: 13px;
+  }
+  .pricing-terms-item {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .pricing-terms-item .lbl {
+    font-size: 10px; font-weight: var(--fw-bold);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--stone-500);
+  }
+  .pricing-terms-item .val {
+    font-size: 13px; font-weight: var(--fw-bold);
+    color: var(--navy-900);
+  }
+
+  .pricing-v2-footer {
+    margin-top: 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .pricing-v2-discount {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: var(--fw-semi);
+    color: var(--mint-800);
+    background: var(--mint-100);
+    padding: 8px 14px; border-radius: var(--radius-lg);
+  }
+
+  @media (max-width: 720px) {
+    .pricing-v2 { padding: 28px; }
+    .pricing-table thead { display: none; }
+    .pricing-table tbody tr { display: block; padding: 18px 0; border-bottom: 1px solid var(--stone-200); }
+    .pricing-table tbody td { display: block; padding: 4px 0 !important; border: none; text-align: left !important; }
+    .pricing-table tbody td:last-child { font-size: 18px; margin-top: 6px; }
+    .pricing-total-row { grid-template-columns: 1fr; }
+  }
+
+  .collateral-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+  }
+  .collateral-card {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 18px;
+    align-items: center;
+    padding: 22px 24px;
+    background: #fff;
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    transition: all var(--duration-med) var(--ease-out);
+  }
+  .collateral-card:hover {
+    border-color: var(--mint-500);
+    box-shadow: var(--shadow-md);
+    text-decoration: none;
+    transform: translateY(-2px);
+  }
+  .collateral-icon {
+    width: 56px; height: 56px;
+    border-radius: var(--radius-lg);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .collateral-icon.deck { background: var(--mint-100); color: var(--mint-800); }
+  .collateral-icon.video { background: var(--rose-100); color: #B81E63; }
+  .collateral-icon.doc { background: var(--sky-100); color: #1A6FA8; }
+  .collateral-icon.lock { background: var(--sun-100); color: #8C6A00; }
+  .collateral-body { min-width: 0; }
+  .collateral-title {
+    font-size: 15px; font-weight: var(--fw-bold);
+    color: var(--navy-900); margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .collateral-desc {
+    font-size: 12.5px; color: var(--stone-700); line-height: 1.45;
+  }
+  .collateral-arrow {
+    color: var(--stone-500); transition: color var(--duration-med) var(--ease-out), transform var(--duration-med) var(--ease-out);
+  }
+  .collateral-card:hover .collateral-arrow {
+    color: var(--mint-700);
+    transform: translateX(3px);
+  }
+  @media (max-width: 720px) {
+    .collateral-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ──────────────── QUOTES SECTION ──────────────── */
+  .quotes-section { background: var(--mint-500); position: relative; overflow: hidden; }
+  .quotes-section .eyebrow { color: var(--navy-900); }
+  .quotes-section .eyebrow::before { color: var(--navy-900); }
+  .quotes-section .section-title { color: var(--navy-900); }
+  .quotes-section .section-sub { color: var(--navy-900); opacity: 0.8; }
+  .quotes-section::before {
+    content: ""; position: absolute;
+    top: -120px; left: -120px;
+    width: 400px; height: 400px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 50%;
+  }
+  .quotes-section::after {
+    content: ""; position: absolute;
+    bottom: -80px; right: -80px;
+    width: 280px; height: 280px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 50%;
+  }
+  .quote-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    position: relative; z-index: 1;
+  }
+  .quote-card {
+    background: #fff;
+    border-radius: var(--radius-2xl);
+    padding: 32px;
+    display: flex; flex-direction: column;
+    box-shadow: 0 10px 24px rgba(10, 24, 74, 0.12);
+  }
+  .quote-mark {
+    font-size: 64px; font-weight: var(--fw-black);
+    color: var(--mint-300); line-height: 0.4;
+    margin-bottom: 12px;
+    font-family: Georgia, serif;
+  }
+  .quote-text {
+    font-size: 15px; line-height: 1.6;
+    color: var(--navy-900); margin: 0 0 24px;
+    flex-grow: 1;
+    font-weight: var(--fw-medium);
+  }
+  .quote-attribution {
+    display: flex; align-items: center; gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid var(--stone-200);
+  }
+  .quote-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--mint-100); color: var(--mint-800);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: var(--fw-bold);
+    flex-shrink: 0;
+  }
+  .quote-name {
+    font-size: 13px; font-weight: var(--fw-bold);
+    color: var(--navy-900); line-height: 1.3;
+  }
+  .quote-role {
+    font-size: 12px; color: var(--stone-700);
+    margin-top: 2px;
+  }
+  @media (max-width: 900px) {
+    .quote-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ──────────────── FAQ ──────────────── */
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item {
+    background: #fff;
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: all var(--duration-med) var(--ease-out);
+  }
+  .faq-item[open] {
+    border-color: var(--mint-300);
+    box-shadow: var(--shadow-sm);
+  }
+  .faq-q {
+    padding: 22px 28px;
+    cursor: pointer;
+    list-style: none;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+    font-size: 17px; font-weight: var(--fw-bold);
+    color: var(--navy-900);
+    letter-spacing: -0.005em;
+    line-height: 1.35;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-toggle {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--stone-200); color: var(--navy-900);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all var(--duration-med) var(--ease-out);
+  }
+  .faq-item[open] .faq-toggle {
+    background: var(--mint-500); color: #fff; transform: rotate(45deg);
+  }
+  .faq-a {
+    padding: 0 28px 24px;
+    font-size: 15px; line-height: 1.65;
+    color: var(--stone-700);
+  }
+  .faq-a.tbd {
+    color: var(--stone-500);
+    font-style: italic;
+    border-left: 3px solid var(--sun-500);
+    padding-left: 20px; margin: 0 28px 24px 28px;
+    padding-bottom: 0;
+    background: var(--sun-100);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding-top: 14px; padding-right: 14px; padding-bottom: 14px;
+  }
+
+  /* ──────────────── NEXT STEPS ──────────────── */
+  .nextsteps-section { background: var(--stone-100); }
+  .step-list { display: flex; flex-direction: column; gap: 16px; position: relative; }
+  .step-list::before {
+    content: ""; position: absolute;
+    left: 21px; top: 32px; bottom: 32px;
+    width: 2px; background: var(--mint-200);
+  }
+  .step-item {
+    display: grid; grid-template-columns: 44px 1fr 220px;
+    gap: 24px;
+    background: #fff;
+    border: 1px solid var(--stone-200);
+    border-radius: var(--radius-2xl);
+    padding: 24px 28px;
+    align-items: start;
+    position: relative; z-index: 1;
+  }
+  .step-num {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--mint-500); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: var(--fw-black);
+    letter-spacing: -0.01em;
+  }
+  .step-item.upcoming .step-num {
+    background: #fff; color: var(--mint-700);
+    border: 2px solid var(--mint-500);
+  }
+  .step-body { min-width: 0; }
+  .step-title {
+    font-size: 17px; font-weight: var(--fw-bold);
+    color: var(--navy-900); margin-bottom: 6px;
+    letter-spacing: -0.005em;
+  }
+  .step-desc {
+    font-size: 14px; line-height: 1.55;
+    color: var(--stone-700); margin-bottom: 12px;
+  }
+  .step-owners {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .owner-chip {
+    font-size: 11px; font-weight: var(--fw-semi);
+    padding: 4px 10px; border-radius: 999px;
+    background: var(--stone-100); color: var(--navy-900);
+    border: 1px solid var(--stone-200);
+  }
+  .owner-chip.reeco { background: var(--mint-100); color: var(--mint-800); border-color: var(--mint-200); }
+  .owner-chip.peregrine { background: var(--navy-100); color: var(--navy-900); border-color: var(--navy-200); }
+  .step-date {
+    text-align: right;
+    font-size: 13px; font-weight: var(--fw-bold);
+    color: var(--navy-900);
+    background: var(--stone-100);
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    line-height: 1.3;
+  }
+  .step-date .lbl {
+    font-size: 10px; font-weight: var(--fw-bold);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--stone-500); display: block; margin-bottom: 4px;
+  }
+  @media (max-width: 720px) {
+    .step-item { grid-template-columns: 44px 1fr; gap: 16px; }
+    .step-date { grid-column: 2; text-align: left; }
+    .step-list::before { display: none; }
+  }
+
+  /* ──────────────── CONTACT ──────────────── */
+  .contact-section {
+    background: var(--navy-900); color: #fff;
+    position: relative; overflow: hidden;
+  }
+  .contact-section::before {
+    content: ""; position: absolute;
+    bottom: -200px; right: -100px;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(43,204,137,0.3), transparent 70%);
+    border-radius: 50%;
+  }
+  .contact-section .eyebrow { color: var(--mint-300); }
+  .contact-section .eyebrow::before { color: var(--mint-300); }
+  .contact-section .section-title { color: #fff; }
+  .contact-section .section-sub { color: rgba(255,255,255,0.75); }
+
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    position: relative; z-index: 1;
+    margin-bottom: 32px;
+  }
+  .contact-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-2xl);
+    padding: 28px;
+    backdrop-filter: blur(8px);
+  }
+  .contact-card-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 18px;
+  }
+  .contact-avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--mint-500); color: var(--navy-900);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: var(--fw-black);
+  }
+  .contact-name {
+    font-size: 18px; font-weight: var(--fw-bold);
+    color: #fff;
+  }
+  .contact-title-text {
+    font-size: 13px; color: rgba(255,255,255,0.7);
+    margin-top: 2px;
+  }
+  .contact-email {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--mint-300); font-size: 14px;
+    font-weight: var(--fw-semi);
+    padding: 10px 14px;
+    background: rgba(43,204,137,0.12);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+  }
+  .contact-email:hover { background: rgba(43,204,137,0.24); text-decoration: none; }
+
+  .booking-card {
+    background: var(--mint-500);
+    border-radius: var(--radius-2xl);
+    padding: 40px 36px;
+    display: grid; grid-template-columns: 1.6fr 1fr;
+    gap: 32px; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .booking-card h3 {
+    font-size: 32px; font-weight: var(--fw-black);
+    color: var(--navy-900); margin: 0 0 10px;
+    letter-spacing: -0.015em; line-height: 1.15;
+  }
+  .booking-card p {
+    font-size: 15px; color: var(--navy-900); opacity: 0.8;
+    margin: 0; line-height: 1.55;
+    font-weight: var(--fw-medium);
+  }
+  .booking-card .booking-cta {
+    display: flex; flex-direction: column; gap: 10px;
+    align-items: flex-end;
+  }
+  .booking-card .sub-line {
+    font-size: 12px; color: var(--navy-900);
+    opacity: 0.7; text-align: right;
+  }
+  @media (max-width: 720px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .booking-card { grid-template-columns: 1fr; padding: 32px 24px; }
+    .booking-card .booking-cta { align-items: stretch; }
+    .booking-card h3 { font-size: 26px; }
+  }
+
+  /* ──────────────── FOOTER ──────────────── */
+  footer {
+    background: #fff;
+    padding: 40px 32px;
+    border-top: 1px solid var(--stone-200);
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 14px; }
+  .footer-brand img { height: 22px; display: block; }
+  .footer-note {
+    font-size: 12px; color: var(--stone-500); line-height: 1.5;
+    max-width: 520px;
+  }
+  .footer-note strong { color: var(--navy-900); font-weight: var(--fw-bold); }
+
+  /* Smooth fade-in for sections on scroll */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ──────────────── PROBLEM + SOLUTION PAIRED (v4) ──────────────── */
+  .ps-pair {
+    display: grid;
+    grid-template-columns: 80px 1fr 60px 1fr;
+    gap: 24px;
+    align-items: stretch;
+    padding: 36px 0;
+    border-top: 1px solid var(--stone-200);
+  }
+  .ps-pair:first-child { border-top: none; padding-top: 0; }
+  .ps-pair:last-child { padding-bottom: 0; }
+  .ps-num {
+    font-size: 64px; font-weight: var(--fw-black);
+    letter-spacing: -0.03em; line-height: 1;
+    color: var(--navy-900);
+    font-feature-settings: "tnum";
+  }
+  .ps-card {
+    padding: 28px;
+    border-radius: var(--radius-2xl);
+    display: flex; flex-direction: column;
+  }
+  .ps-card.problem {
+    background: var(--rose-100);
+    border: 1px solid var(--rose-200);
+  }
+  .ps-card.answer {
+    background: var(--mint-100);
+    border: 1px solid var(--mint-200);
+  }
+  .ps-eyebrow {
+    font-size: 10px; font-weight: var(--fw-bold);
+    letter-spacing: 2px; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-bottom: 12px;
+  }
+  .ps-eyebrow.problem { color: #B81E63; }
+  .ps-eyebrow.answer { color: var(--mint-800); }
+  .ps-eyebrow .ps-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+  }
+  .ps-eyebrow.problem .ps-dot { background: var(--rose-500); }
+  .ps-eyebrow.answer .ps-dot { background: var(--mint-500); }
+  .ps-headline {
+    font-size: 19px; font-weight: var(--fw-bold);
+    color: var(--navy-900); margin: 0 0 12px;
+    letter-spacing: -0.005em; line-height: 1.25;
+  }
+  .ps-body {
+    font-size: 14px; line-height: 1.6;
+    color: var(--stone-700); margin: 0;
+    flex-grow: 1;
+  }
+  .ps-arrow {
+    display: flex; align-items: center; justify-content: center;
+    color: var(--mint-500);
+  }
+  .ps-arrow svg { display: block; }
+  @media (max-width: 900px) {
+    .ps-pair { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
+    .ps-num { font-size: 40px; }
+    .ps-arrow { transform: rotate(90deg); margin: 0 auto; }
+  }
+
+  /* ──────────────── INLINE CALLOUT QUOTE (v4) ──────────────── */
+  .callout-quote {
+    margin-top: 56px;
+    background: var(--navy-900);
+    color: #fff;
+    border-radius: var(--radius-3xl);
+    padding: 44px 56px;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    align-items: start;
+    position: relative;
+    overflow: hidden;
+  }
+  .callout-quote.mint {
+    background: var(--mint-500); color: var(--navy-900);
+  }
+  .callout-quote::before {
+    content: ""; position: absolute;
+    top: -100px; right: -100px;
+    width: 300px; height: 300px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+  .callout-quote.mint::before {
+    background: rgba(255,255,255,0.25);
+  }
+  .callout-mark {
+    font-family: Georgia, serif;
+    font-size: 120px; font-weight: var(--fw-black);
+    line-height: 0.6; color: var(--mint-300);
+    position: relative; z-index: 1;
+  }
+  .callout-quote.mint .callout-mark { color: rgba(10,24,74,0.25); }
+  .callout-body {
+    position: relative; z-index: 1;
+  }
+  .callout-body p {
+    font-size: 22px; line-height: 1.5;
+    font-weight: var(--fw-medium);
+    margin: 0 0 24px;
+    color: inherit;
+    letter-spacing: -0.005em;
+  }
+  .callout-attr {
+    display: flex; align-items: center; gap: 14px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.18);
+  }
+  .callout-quote.mint .callout-attr {
+    border-top-color: rgba(10,24,74,0.2);
+  }
+  .callout-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--mint-300); color: var(--navy-900);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: var(--fw-black);
+    flex-shrink: 0;
+  }
+  .callout-quote.mint .callout-avatar {
+    background: var(--navy-900); color: #fff;
+  }
+  .callout-name {
+    font-size: 16px; font-weight: var(--fw-bold);
+    color: inherit;
+  }
+  .callout-meta {
+    font-size: 13px; opacity: 0.75; margin-top: 2px;
+  }
+  @media (max-width: 720px) {
+    .callout-quote { padding: 32px 28px; grid-template-columns: 1fr; gap: 12px; }
+    .callout-mark { font-size: 64px; margin-bottom: -20px; }
+    .callout-body p { font-size: 18px; }
+  }
+
+  /* ──────────────── HERO TIMELINE STRIP (v4) ──────────────── */
+  .hero-timeline {
+    position: relative; z-index: 1;
+    max-width: 1200px; margin: -80px auto 0;
+    padding: 28px 32px 64px;
+  }
+  .hero-timeline-card {
+    background: #fff;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+    padding: 26px 32px;
+    display: grid;
+    grid-template-columns: minmax(180px, auto) repeat(4, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  .hero-timeline-label {
+    display: flex; flex-direction: column; gap: 4px;
+    padding-top: 8px;
+  }
+  .hero-timeline-eyebrow {
+    font-size: 10px; font-weight: var(--fw-bold);
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--mint-700);
+  }
+  .hero-timeline-title {
+    font-size: 18px; font-weight: var(--fw-bold);
+    color: var(--navy-900); letter-spacing: -0.005em;
+    line-height: 1.2;
+  }
+  .ht-step {
+    display: flex; flex-direction: column; gap: 4px;
+    padding-left: 24px;
+    padding-top: 18px;
+    border-left: 1px solid var(--stone-200);
+    position: relative;
+  }
+  .ht-step::before {
+    content: ""; position: absolute;
+    left: -6px; top: 14px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--mint-500);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px var(--stone-200);
+  }
+  .ht-step.future::before {
+    background: #fff; border: 2px solid var(--mint-500);
+    box-shadow: 0 0 0 1px var(--stone-200);
+  }
+  .ht-step-num {
+    font-size: 10px; font-weight: var(--fw-bold);
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--stone-500);
+  }
+  .ht-step-title {
+    font-size: 14px; font-weight: var(--fw-bold);
+    color: var(--navy-900); line-height: 1.3;
+    letter-spacing: -0.005em;
+  }
+  .ht-step-date {
+    font-size: 12px; color: var(--stone-700);
+    font-weight: var(--fw-medium);
+  }
+  @media (max-width: 900px) {
+    .hero-timeline { margin-top: -60px; padding: 20px 22px 48px; }
+    .hero-timeline-card { grid-template-columns: 1fr; gap: 18px; padding: 22px; }
+    .ht-step { padding-left: 22px; padding-bottom: 18px; border-left: none; }
+    .ht-step:last-child { padding-bottom: 0; }
+    .ht-step::before { left: 0; top: 4px; }
+  }
+
+</style>
+</head>
+
+<body>
+
+<!-- ──────────── NAV ──────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top" aria-label="Reeco home">
+      <img src="assets/reeco-logo-primary-green.svg" alt="Reeco">
+    </a>
+    <div class="nav-divider" aria-hidden="true"></div>
+    <div class="nav-context">prepared for <strong>Lexima Lodging</strong> &nbsp;<span style="color:var(--stone-400)">///</span>&nbsp; ap automation · 30 properties · m3</div>
+    <div class="nav-links">
+      <a href="#problem">problem &amp; solution</a>
+      <a href="#platform">platform</a>
+      <a href="#pricing">pricing</a>
+      <a href="#integration">integration</a>
+      <a href="#library">library</a>
+      <a href="#faq">faq</a>
+    </div>
+    <a href="https://calendar.app.google/aZ3j7d7nFaq6hrEg7" target="_blank" rel="noopener" class="btn btn-primary nav-cta">Schedule time with Zander <span class="arr">→</span></a>
+  </div>
+</nav>
+
+<!-- ──────────── SECTION 01: HERO ──────────── -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow"><span class="live-dot"></span>private digital sales room</div>
+      <h1>Nick, Taylor &mdash;<br><em>here's everything</em> ahead of your Reeco review.</h1>
+      <p class="hero-sub">A hospitality-native AP automation platform that integrates directly with M3 &mdash; built to eliminate the invoicing failures, manual coding, and M3 sync issues your team deals with today.</p>
+      <div class="hero-context">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9z"/></svg>
+        Built for Lexima &nbsp;<span class="sep">///</span>&nbsp; hotel management company &nbsp;<span class="sep">///</span>&nbsp; M3 direct integration
+      </div>
+      <div class="hero-actions">
+        <a href="https://calendar.app.google/aZ3j7d7nFaq6hrEg7" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="background: var(--navy-900);">Schedule time with Zander <span class="arr">→</span></a>
+        <a href="https://app.fireflies.ai/soundbites/gssys2g7PtY" target="_blank" rel="noopener" class="btn btn-on-mint btn-lg">Watch the demo <span class="arr">→</span></a>
+      </div>
+    </div>
+
+    <aside class="meeting-card" aria-label="Meeting context">
+      <div class="meeting-card-eyebrow">
+        <span>your proposal review</span>
+        <span class="pill">demo · may 26</span>
+      </div>
+      <div class="meeting-date">
+        <span class="day" style="font-size:36px;line-height:1.05;letter-spacing:-0.015em;">Demo + proposal review</span>
+      </div>
+      <div class="meeting-time">date pending team availability &nbsp;·&nbsp; with Megan, VP of Operations + leadership</div>
+
+      <div class="meeting-attendees">
+        <div class="attendee-label">Lexima</div>
+        <div class="attendee-row">
+          <div class="attendee-avatar peregrine">NA</div>
+          <div class="attendee-info">
+            <div class="attendee-name">Nick Auer</div>
+            <div class="attendee-role">Controller</div>
+          </div>
+        </div>
+        <div class="attendee-row">
+          <div class="attendee-avatar peregrine">TG</div>
+          <div class="attendee-info">
+            <div class="attendee-name">Taylor Gilbert</div>
+            <div class="attendee-role">Accounting Manager</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meeting-attendees">
+        <div class="attendee-label">Reeco</div>
+        <div class="attendee-row">
+          <div class="attendee-avatar reeco">ZS</div>
+          <div class="attendee-info">
+            <div class="attendee-name">Zander Srodes</div>
+            <div class="attendee-role">Head of Enterprise Sales</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <div class="hero-scallop" aria-hidden="true"></div>
+</section>
+
+<!-- ──────────── HERO TIMELINE (what happens next) ──────────── -->
+<div class="hero-timeline">
+  <div class="hero-timeline-card" style="grid-template-columns: minmax(180px, auto) repeat(3, 1fr);">
+    <div class="hero-timeline-label">
+      <div class="hero-timeline-eyebrow">/// what happens next</div>
+      <div class="hero-timeline-title">From here to go-live</div>
+    </div>
+    <div class="ht-step">
+      <div class="ht-step-num">step 01</div>
+      <div class="ht-step-title">Proposal review</div>
+      <div class="ht-step-date">Nick, Taylor + leadership &middot; TBD</div>
+    </div>
+    <div class="ht-step future">
+      <div class="ht-step-num">step 02</div>
+      <div class="ht-step-title">Follow-up demo</div>
+      <div class="ht-step-date">Megan, VP Ops + regional directors</div>
+    </div>
+    <div class="ht-step future">
+      <div class="ht-step-num">step 03</div>
+      <div class="ht-step-title">Contract &amp; kickoff</div>
+      <div class="ht-step-date">AP automation live within 1 week</div>
+    </div>
+  </div>
+</div>
+
+<!-- ──────────── SECTION 02: PROBLEM + SOLUTION (merged) ──────────── -->
+<section id="problem">
+  <div class="container">
+    <div class="eyebrow">section 02 &nbsp;/&nbsp; business case + proposed solution</div>
+    <h2 class="section-title">The problem you're solving — and how Reeco closes it.</h2>
+    <p class="section-sub">Three pain points. Three direct answers.</p>
+
+    <div class="ps-list">
+      <div class="ps-pair">
+        <div class="ps-num">01</div>
+        <div class="ps-card problem">
+          <div class="ps-eyebrow problem"><span class="ps-dot"></span>the problem</div>
+          <h3 class="ps-headline">Invoices failing to reach M3 &mdash; weekly, without warning.</h3>
+          <p class="ps-body">Lexima's current system generates incorrect coding, blocked invoices, and duplicates on a weekly basis. When invoices don't flow through to M3, the failure queue has to be manually reviewed &mdash; a process that has become a standing part of the team's weekly routine. There's no proactive flagging; the error only surfaces during reconciliation.</p>
+        </div>
+        <div class="ps-arrow" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="ps-card answer">
+          <div class="ps-eyebrow answer"><span class="ps-dot"></span>the answer</div>
+          <h3 class="ps-headline">Invoices sync to M3 automatically &mdash; no failure queue.</h3>
+          <p class="ps-body">Reeco is M3's official Preferred Partner &mdash; the integration was built with M3, not around it. GL accounts and vendors sync directly from your M3 instance. Approved invoices flow back automatically, fully coded, with no manual exports and no month-end catch-up. Invoices are visible and viewable from M3 &mdash; not just from Reeco.</p>
+        </div>
+      </div>
+
+      <div class="ps-pair">
+        <div class="ps-num">02</div>
+        <div class="ps-card problem">
+          <div class="ps-eyebrow problem"><span class="ps-dot"></span>the problem</div>
+          <h3 class="ps-headline">Manual coding that creates inconsistency at scale.</h3>
+          <p class="ps-body">With the current system, GMs code invoices individually with no intelligence that learns over time. The same item ordered by different departments codes differently across properties &mdash; inconsistency that compounds at month-end and creates extra review work for the AP team.</p>
+        </div>
+        <div class="ps-arrow" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="ps-card answer">
+          <div class="ps-eyebrow answer"><span class="ps-dot"></span>the answer</div>
+          <h3 class="ps-headline">AI that learns how your team codes &mdash; by role, by property.</h3>
+          <p class="ps-body">Reeco's AI learns from every invoice your team processes. A housekeeping manager coding nitrile gloves applies a different GL than a food &amp; beverage manager ordering the same item. After a few coding cycles, the system handles the distinction automatically &mdash; no manual intervention required.</p>
+        </div>
+      </div>
+
+      <div class="ps-pair">
+        <div class="ps-num">03</div>
+        <div class="ps-card problem">
+          <div class="ps-eyebrow problem"><span class="ps-dot"></span>the problem</div>
+          <h3 class="ps-headline">No single view across all properties for the AP team.</h3>
+          <p class="ps-body">The AP team currently has to access each property separately to review invoice status. There's no consolidated corporate view showing all 30 properties, what's pending approval, and what has been pushed to M3.</p>
+        </div>
+        <div class="ps-arrow" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="ps-card answer">
+          <div class="ps-eyebrow answer"><span class="ps-dot"></span>the answer</div>
+          <h3 class="ps-headline">One login. All properties. Configurable permissions.</h3>
+          <p class="ps-body">Reeco's corporate dashboard gives the AP team visibility across the entire portfolio from a single login. Approval workflows are fully configurable &mdash; GM codes, regional director approval gate for budget overages, AP review, then push to M3 &mdash; built to match how Lexima already operates, not the other way around.</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="callout-quote">
+      <div class="callout-mark">&ldquo;</div>
+      <div class="callout-body">
+        <p>The biggest thing that I think me and Jeff have noticed is how it goes instantly into M3 &mdash; where with our previous system it was sometimes anywhere from a 10-hour delay to a 24-hour delay until it showed up in M3.</p>
+        <div class="callout-attr">
+          <div class="callout-avatar">SH</div>
+          <div>
+            <div class="callout-name">Sai Hospitality Management Company</div>
+            <div class="callout-meta">AP Automation &mdash; M3 integration</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ──────────── SECTION 03: THE PLATFORM ──────────── -->
+<section id="platform" class="platform-section">
+  <div class="container">
+    <div class="eyebrow">section 03 &nbsp;/&nbsp; the platform</div>
+    <h2 class="section-title">What's included.</h2>
+    <p class="section-sub">One login. Built for hospitality back-of-house from the ground up.</p>
+
+    <div class="platform-grid">
+      <article class="platform-card" style="border-color: var(--mint-300); box-shadow: 0 0 0 1px var(--mint-300);">
+        <div class="platform-card-head">
+          <div class="platform-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13l2 2 4-4"/></svg>
+          </div>
+          <h3>AP Automation</h3>
+          <span style="margin-left:auto;font-size:10px;font-weight:var(--fw-bold);letter-spacing:1.5px;text-transform:uppercase;color:var(--mint-800);background:var(--mint-100);padding:5px 10px;border-radius:999px;">primary scope</span>
+        </div>
+        <p>Every invoice &mdash; organized, AI-coded by line item, and ready to sync with M3. <strong>What used to take 7–10 minutes per invoice takes about 20 seconds.</strong> The coding learns over time, so it gets faster and more accurate the longer you use it.</p>
+      </article>
+
+      <article class="platform-card">
+        <div class="platform-card-head">
+          <div class="platform-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <h3>Purchasing &amp; Receiving</h3>
+          <span style="margin-left:auto;font-size:10px;font-weight:var(--fw-bold);letter-spacing:1.5px;text-transform:uppercase;color:var(--stone-700);background:var(--stone-100);padding:5px 10px;border-radius:999px;">when ready</span>
+        </div>
+        <p>Full visibility and control across F&amp;B, housekeeping, engineering, and service agreements. All your suppliers in one connected place &mdash; <strong>existing partnerships, pricing, and agreements honored.</strong> Mobile receiving lets your team check in orders on the spot; Reeco handles missing items and credits automatically.</p>
+      </article>
+
+      <article class="platform-card">
+        <div class="platform-card-head">
+          <div class="platform-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <h3>Inventory</h3>
+          <span style="margin-left:auto;font-size:10px;font-weight:var(--fw-bold);letter-spacing:1.5px;text-transform:uppercase;color:var(--stone-700);background:var(--stone-100);padding:5px 10px;border-radius:999px;">when ready</span>
+        </div>
+        <p>Always up-to-date pricing, easy audit setup, and a mobile-friendly count experience. <strong>Open the app, count by tapping through the list, and your report is ready instantly.</strong></p>
+      </article>
+
+      <article class="platform-card">
+        <div class="platform-card-head">
+          <div class="platform-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M12 2v20"/><path d="M6 6c2 0 4 2 4 4M18 6c-2 0-4 2-4 4M6 18c2 0 4-2 4-4M18 18c-2 0-4-2-4-4"/></svg>
+          </div>
+          <h3>Culinary Management</h3>
+          <span style="margin-left:auto;font-size:10px;font-weight:var(--fw-bold);letter-spacing:1.5px;text-transform:uppercase;color:var(--stone-700);background:var(--stone-100);padding:5px 10px;border-radius:999px;">when ready</span>
+        </div>
+        <p>Menus connected to recipes. <strong>Clear visibility into food cost by dish</strong> &mdash; what's making money, what's costing more than it should, and where to adjust before the next menu cycle.</p>
+      </article>
+    </div>
+
+    <aside class="callout-quote mint">
+      <div class="callout-mark">&ldquo;</div>
+      <div class="callout-body">
+        <p>Candidly, Reeco has made AP. It saves a boatload of time. It is such a better system. I went in there and I was fumbling around and I was like, holy &mdash; this is easy and fast.</p>
+        <div class="callout-attr">
+          <div class="callout-avatar">AL</div>
+          <div>
+            <div class="callout-name">Aloft Indianapolis Downtown</div>
+            <div class="callout-meta">AP Automation</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ──────────── SECTION 04: PRICING ──────────── -->
+<section id="pricing" class="pricing-section">
+  <div class="container">
+    <div class="eyebrow">section 04 &nbsp;/&nbsp; pricing</div>
+    <h2 class="section-title">Pricing structured for Lexima.</h2>
+    <p class="section-sub">This proposal was prepared for Lexima following your May 26 discovery call. A 50% enterprise discount has been applied to the setup fee.</p>
+
+    <div class="pricing-v2">
+      <div class="pricing-v2-header">
+        <div class="pricing-v2-header-l">
+          <h3>AP Automation &mdash; 30 properties</h3>
+          <p>AP automation priced per property, per month. Setup is a one-time per-property fee with the enterprise discount applied.</p>
+        </div>
+        <div class="pricing-v2-discount">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+          50% setup discount applied
+        </div>
+      </div>
+
+      <table class="pricing-table" aria-label="Pricing breakdown by module">
+        <thead>
+          <tr>
+            <th>Module</th>
+            <th>Billing</th>
+            <th>Unit price</th>
+            <th>Qty</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pricing-module">AP Automation</span></td>
+            <td><span class="billing">Monthly</span></td>
+            <td><span class="unit">$150 / property / mo</span></td>
+            <td><span class="unit">30</span></td>
+            <td><span class="total">$4,500 / mo</span></td>
+          </tr>
+          <tr>
+            <td><span class="pricing-module">Setup fee<span class="sub">after 50% enterprise discount</span></span></td>
+            <td><span class="billing onetime">One-time</span></td>
+            <td><span class="unit">$500 / property</span></td>
+            <td><span class="unit">30</span></td>
+            <td><span class="total">$7,500</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pricing-total-row" style="grid-template-columns: 1fr 1fr 1fr;">
+        <div class="pricing-total-card">
+          <div class="tlbl">Monthly total</div>
+          <div class="tnum">$4,500<span style="font-size:16px;font-weight:var(--fw-bold);margin-left:4px;">/ mo</span></div>
+          <div class="tdesc">across 30 properties</div>
+        </div>
+        <div class="pricing-total-card dark">
+          <div class="tlbl">One-time setup</div>
+          <div class="tnum">$7,500</div>
+          <div class="tdesc">after $7,500 enterprise discount</div>
+        </div>
+        <div class="pricing-total-card" style="background: var(--navy-100);">
+          <div class="tlbl" style="color: var(--mint-800);">Annual value</div>
+          <div class="tnum">$54,000</div>
+          <div class="tdesc">subscription, year one</div>
+        </div>
+      </div>
+
+      <div class="pricing-terms" aria-label="Contract terms">
+        <div class="pricing-terms-item">
+          <span class="lbl">Initial term</span>
+          <span class="val">24 months</span>
+        </div>
+        <div class="pricing-terms-item">
+          <span class="lbl">Payment terms</span>
+          <span class="val">Net 30</span>
+        </div>
+        <div class="pricing-terms-item">
+          <span class="lbl">Renewal</span>
+          <span class="val">Auto-renews in 12-month increments</span>
+        </div>
+      </div>
+
+      <div class="pricing-v2-footer">
+        <p style="font-size: 13px; color: var(--stone-700); margin: 0; max-width: 480px; line-height: 1.5;">Auto-renewal in 12-month increments after the initial term accommodates portfolio changes.</p>
+        <a href="https://lp.reeco.io/4lpZhjgMNjnzuWBUNQg" target="_blank" rel="noopener" class="btn btn-primary">View the full live proposal <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── SECTION 05: INTEGRATION & IMPLEMENTATION ──────────── -->
+<section id="integration" class="integration-section">
+  <div class="container">
+    <div class="eyebrow">section 05 &nbsp;/&nbsp; integration &amp; implementation</div>
+    <h2 class="section-title">How we connect &mdash; and how fast we go live.</h2>
+    <p class="section-sub">Reeco's AP automation is purpose-built for the M3 ecosystem and our fastest module to deploy.</p>
+
+    <div class="stack-grid" style="grid-template-columns: repeat(2, 1fr); gap: 20px;">
+      <div class="stack-card connect" style="padding: 28px;">
+        <div class="stack-label">Accounting system</div>
+        <div class="stack-name" style="font-size: 22px; margin-bottom: 12px;">M3</div>
+        <div class="stack-status connect">✓ direct / native</div>
+        <div class="stack-detail" style="font-size: 13px; margin-top: 14px;">Reeco is M3's official Preferred Partner. GL accounts and vendors sync directly from your M3 instance at setup &mdash; no manual mapping. Invoices flow back automatically once approved. No integration fees from Reeco or M3.</div>
+      </div>
+      <div class="stack-card replace" style="padding: 28px;">
+        <div class="stack-label">Current provider</div>
+        <div class="stack-name" style="font-size: 22px; margin-bottom: 12px;">EPRO / Reactor Net</div>
+        <div class="stack-status replace">→ replacing</div>
+        <div class="stack-detail" style="font-size: 13px; margin-top: 14px;">Vendors who currently email invoices to EPRO can redirect to Reeco's dedicated inbox on Day 1. No re-training required for vendors. Your team stops managing the failure queue on the same day you go live.</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 24px; align-items: stretch;" class="impl-row">
+      <div style="background:#fff; border:1px solid var(--stone-200); border-radius: var(--radius-2xl); padding: 32px;">
+        <div style="font-size:11px;font-weight:var(--fw-bold);letter-spacing:2px;text-transform:uppercase;color:var(--mint-700);margin-bottom:10px;">AP automation</div>
+        <h3 style="font-size: 28px; font-weight: var(--fw-black); color: var(--navy-900); margin: 0 0 14px; letter-spacing:-0.015em; line-height:1.1;">Live in 1 week.</h3>
+        <p style="font-size:14px; line-height:1.6; color: var(--stone-700); margin: 0 0 20px;">Reeco's AP automation module is the fastest to deploy &mdash; and the fastest path to eliminating the failure queue and manual coding your team manages today.</p>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span><strong style="color:var(--navy-900)">No dedicated FTE required</strong> from your team.</span></li>
+          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span>GL codes pulled directly from M3 at kickoff &mdash; <strong style="color:var(--navy-900)">no manual mapping.</strong></span></li>
+          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span>Vendor email inbox live on Day 1 &mdash; invoices start flowing immediately.</span></li>
+          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span>AI coding learns from your team's first invoice cycles and automates from there.</span></li>
+          <li style="display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--stone-700);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg> <span>M3 sync active from Day 1 &mdash; invoices visible in M3 as they are approved.</span></li>
+        </ul>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-header">
+          <h3>Rollout sequence</h3>
+          <div class="legend">full plan delivered at follow-up</div>
+        </div>
+        <div class="timeline-rows">
+          <div class="timeline-row">
+            <div class="timeline-phase"><span class="dot"></span>Day 0</div>
+            <div class="timeline-activity">Contract execution &mdash; M3 credentials configured; GL codes and vendor data imported; vendor invoice inboxes activated</div>
+            <div class="timeline-target">kickoff</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-phase"><span class="dot"></span>Week 1</div>
+            <div class="timeline-activity">AP Automation live across all 30 properties &mdash; invoices flowing, coding, and syncing to M3</div>
+            <div class="timeline-target">week 1</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-phase"><span class="dot"></span>Week 1</div>
+            <div class="timeline-activity">Approval workflow: GM codes → Regional Director approval gate → AP review → M3; corporate dashboard active</div>
+            <div class="timeline-target">week 1</div>
+          </div>
+          <div class="timeline-row live">
+            <div class="timeline-phase"><span class="dot"></span>Week 1</div>
+            <div class="timeline-activity">Failure queue eliminated &mdash; AP team working out of one corporate dashboard</div>
+            <div class="timeline-target">live</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-phase" style="color: var(--stone-500);"><span class="dot" style="background: var(--stone-300);"></span>Future</div>
+            <div class="timeline-activity" style="color: var(--stone-700);">Purchasing &amp; Receiving available when Megan and the operations team are ready to evaluate</div>
+            <div class="timeline-target" style="color: var(--stone-500);">when ready</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:13px; color: var(--stone-500); margin: 24px 0 0; font-style: italic;">A full implementation plan specific to Lexima will be presented at the follow-up meeting.</p>
+  </div>
+</section>
+
+<!-- ──────────── SECTION 06: COLLATERAL LIBRARY ──────────── -->
+<section id="library">
+  <div class="container">
+    <div class="eyebrow">section 06 &nbsp;/&nbsp; collateral library</div>
+    <h2 class="section-title">Everything in one place.</h2>
+    <p class="section-sub">Background materials Nick, Taylor, Megan, and the team can review ahead of the follow-up call.</p>
+
+    <div class="collateral-grid">
+      <a class="collateral-card" href="https://docs.google.com/presentation/d/1Ov45up9OKluseqZutuYveSPxhOrJ9EqNl8nPCp2ZFaQ/edit" target="_blank" rel="noopener">
+        <div class="collateral-icon deck">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="collateral-body">
+          <div class="collateral-title">Lexima + Reeco Presentation</div>
+          <div class="collateral-desc">The deck from your May 26 call &mdash; including the M3 integration overview, AP automation walkthrough, and how Reeco is built specifically for the pain points you described.</div>
+        </div>
+        <div class="collateral-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      </a>
+
+      <a class="collateral-card" href="https://app.fireflies.ai/view/Lexima+%2B+Reeco::01KRZZY7ABFNRP7NE20ZNYMAVV" target="_blank" rel="noopener">
+        <div class="collateral-icon video">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <div class="collateral-body">
+          <div class="collateral-title">May 26 Discovery Call Recording</div>
+          <div class="collateral-desc">Full recording of the initial call with Nick Auer, Taylor Gilbert, Zander Srodes, and Rachel Kammer (M3 Account Manager) &mdash; hosted in Fireflies.</div>
+        </div>
+        <div class="collateral-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      </a>
+
+      <a class="collateral-card" href="https://lp.reeco.io/4lpZhjgMNjnzuWBUNQg" target="_blank" rel="noopener">
+        <div class="collateral-icon doc">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="collateral-body">
+          <div class="collateral-title">Live Proposal</div>
+          <div class="collateral-desc">Full pricing proposal for Lexima &mdash; AP Automation for 30 properties with 50% enterprise discount applied.</div>
+        </div>
+        <div class="collateral-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      </a>
+
+      <a class="collateral-card" href="mailto:zanders@reeco.com?subject=Lexima%20%E2%80%93%20SOC%202%20Type%20II%20documentation%20request">
+        <div class="collateral-icon lock">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div class="collateral-body">
+          <div class="collateral-title">SOC 2 Type II Documentation</div>
+          <div class="collateral-desc">Available upon request &mdash; email zanders@reeco.com and we'll send the report within 24 hours.</div>
+        </div>
+        <div class="collateral-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── SECTION 07: FAQ ──────────── -->
+<section id="faq">
+  <div class="container">
+    <div class="eyebrow">section 07 &nbsp;/&nbsp; faqs</div>
+    <h2 class="section-title">Questions we expect &mdash; answered directly.</h2>
+    <p class="section-sub">If something's missing, email Zander and we'll add it before the follow-up call.</p>
+
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary class="faq-q">
+          <span>"We're still under contract with our current provider. How does the transition work?"</span>
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-a">We understand you can't cut over overnight. Once you have clarity on your EPRO/Reactor Net contract end date, reach out and we'll work through business terms &mdash; including options to ease any overlap period. <strong style="color:var(--navy-900)">The goal is a clean switch, not a situation where you're paying for both systems longer than necessary.</strong></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>"How fast can we actually be live?"</span>
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-a"><strong style="color:var(--navy-900)">Reeco's AP automation is live within 1 week of contract execution.</strong> This is the fastest module we deploy &mdash; and the M3 preferred partnership is why. Your GL codes and vendor data are already in M3. We don't start from scratch. On Day 1, vendor email inboxes are live, invoices start flowing, and the M3 sync is active. By the end of Week 1, your AP team is processing invoices in Reeco and your failure queue is gone.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>"Will the M3 integration actually work without the issues we have today?"</span>
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-a"><strong style="color:var(--navy-900)">Yes.</strong> Reeco is M3's official Preferred Partner &mdash; this is not a third-party integration bolted on. The connection is direct. GL accounts pull from M3 automatically at setup. Invoices approved in Reeco sync to M3 automatically &mdash; posted and viewable from inside M3, not just from Reeco. No integration fees from Reeco or M3.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>"What about adoption at the property level? Our GMs already have a lot on their plates."</span>
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-a">Reeco is designed for the person who isn't a procurement professional. Invoices arrive by email, get coded automatically, and route for approval &mdash; GMs and department heads interact with <strong style="color:var(--navy-900)">a simple approval flow, not a complex system.</strong> The learning curve is minimal. The corporate dashboard means the AP team can manage everything centrally without logging into each property separately.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>"What does your security and compliance posture look like?"</span>
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-a">Reeco is <strong style="color:var(--navy-900)">SOC 2 Type II certified.</strong> Compliance documentation is available upon request &mdash; email zanders@reeco.com and we'll send the report within 24 hours. All data is encrypted in transit and at rest. Enterprise-grade cloud infrastructure with role-based access controls. Master Services Agreement available for legal review; multi-year terms available.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── SECTION 08: CONTACT ──────────── -->
+<section id="booking" class="contact-section">
+  <div class="container">
+    <div class="eyebrow">section 08 &nbsp;/&nbsp; contact</div>
+    <h2 class="section-title">Reach us directly.</h2>
+    <p class="section-sub">Your direct line to the Reeco team working on this for Lexima.</p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-card-header">
+          <div class="contact-avatar">ZS</div>
+          <div>
+            <div class="contact-name">Zander Srodes</div>
+            <div class="contact-title-text">Head of Enterprise Sales — Reeco</div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a class="contact-email" href="mailto:zanders@reeco.com">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            zanders@reeco.com
+          </a>
+          <a class="contact-email" href="tel:+19412321191">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            941.232.1191
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-header">
+          <div class="contact-avatar">PB</div>
+          <div>
+            <div class="contact-name">Paul Bennie</div>
+            <div class="contact-title-text">SVP of Revenue — Reeco</div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a class="contact-email" href="mailto:paulb@reeco.com">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            paulb@reeco.com
+          </a>
+          <a class="contact-email" href="tel:+17179795855">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            717.979.5855
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="booking-card">
+      <div>
+        <h3>Schedule time with Zander.</h3>
+        <p>Have a question before the follow-up call? Email zanders@reeco.com &mdash; same-day response.</p>
+      </div>
+      <div class="booking-cta">
+        <a href="https://calendar.app.google/aZ3j7d7nFaq6hrEg7" target="_blank" rel="noopener" class="btn btn-on-mint btn-lg" style="background:var(--navy-900);color:#fff;">Book time with Zander <span class="arr">→</span></a>
+        <span class="sub-line">opens reeco's live booking page</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── FOOTER ──────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/reeco-logo-primary-green.svg" alt="Reeco">
+      <span style="font-size:11px; color: var(--stone-500); letter-spacing: 1.5px; text-transform: uppercase; font-weight: var(--fw-bold);">/// digital sales room</span>
+    </div>
+    <div class="footer-note">
+      <strong>Private &amp; shareable by link.</strong> This page was built for Nick Auer, Taylor Gilbert, and the Lexima leadership team. It is not indexed or gated.
+    </div>
+  </div>
+</footer>
+
+<script>
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.ps-pair, .platform-card, .pricing-v2, .stack-card, .timeline, .collateral-card, .faq-item, .contact-card, .booking-card, .callout-quote').forEach(el => {
+      el.classList.add('reveal');
+      io.observe(el);
+    });
+  }
+</script>
+
+</body>
+</html>
